@@ -1,6 +1,6 @@
     const initSwiper = () => {
         const swiper = new Swiper('.swiper', {
-            slidesPerView: 'auto',
+            slidesPerView: 1,
             spaceBetween: 20,
             centeredSlides: false,
             loop: false,
@@ -11,16 +11,12 @@
                 dynamicBullets: true,
             },
             breakpoints: {
-                320: {
-                    slidesPerView: 1,
-                    spaceBetween: 15
-                },
                 576: {
                     slidesPerView: 1,
                     spaceBetween: 20
                 },
                 768: {
-                    slidesPerView: 2,
+                    slidesPerView: 3,
                     spaceBetween: 25
                 },
                 992: {
@@ -40,36 +36,65 @@
             longSwipesRatio: 0.5,
             longSwipesMs: 300,
             followFinger: true,
-            preventInteractionOnTransition: true
+            preventInteractionOnTransition: true,
+            on: {
+                init: function() {
+                    // Make sure active slides are visible
+                    this.slides.forEach((slide, index) => {
+                        if (index === this.activeIndex || 
+                            index === this.activeIndex + 1 || 
+                            index === this.activeIndex - 1) {
+                            slide.style.opacity = 1;
+                            slide.style.transform = 'translateY(0)';
+                        }
+                    });
+                },
+                slideChange: function() {
+                    // Update visibility of slides around active slide
+                    this.slides.forEach((slide, index) => {
+                        if (index === this.activeIndex || 
+                            index === this.activeIndex + 1 || 
+                            index === this.activeIndex - 1) {
+                            slide.style.opacity = 1;
+                            slide.style.transform = 'translateY(0)';
+                        } else {
+                            slide.style.opacity = 0;
+                            slide.style.transform = 'translateY(20px)';
+                        }
+                    });
+                }
+            }
         });
+
         // Force Swiper to update on resize
         window.addEventListener('resize', () => {
             swiper.update();
         });
 
-        // Initialize animations for visible slides
-        swiper.on('slideChange', function() {
-            document.querySelectorAll('.swiper-slide').forEach(slide => {
-                if (slide.classList.contains('swiper-slide-active')) {
-                    slide.classList.add('animate');
+        // Click event for certification cards
+        document.querySelectorAll('.certification-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const modalId = this.closest('.swiper-slide').getAttribute('data-modal');
+                if (modalId) {
+                    const modal = document.getElementById(modalId);
+                    if (modal) {
+                       modal.style.display = 'block';
+                       document.body.style.overflow = 'hidden';
+                    }
                 }
             });
         });
-
-        // Initialize first set of slides
-        document.querySelectorAll('.swiper-slide-active').forEach(slide => {
-            slide.classList.add('animate');
-        });
     };
+
         // Mobile Navigation
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
-
+        
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             hamburger.innerHTML = navLinks.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
-
+        
         // Close mobile menu when clicking a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
@@ -77,15 +102,15 @@
                 hamburger.innerHTML = '<i class="fas fa-bars"></i>';
             });
         });
-
+        
         // Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-
+                
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
-
+                
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     window.scrollTo({
@@ -95,18 +120,18 @@
                 }
             });
         });
-
+        
         // Scroll Indicator
         const scrollIndicator = document.getElementById('scrollIndicator');
-
+        
         window.addEventListener('scroll', () => {
             const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrollProgress = (scrollTop / scrollHeight) * 100;
             scrollIndicator.style.width = `${scrollProgress}%`;
         });
-
-
+        
+        
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
                 fab.classList.add('active');
@@ -114,28 +139,28 @@
                 fab.classList.remove('active');
             }
         });
-
+        
         // Modal Functionality
         const viewResumeBtn = document.getElementById('viewResumeBtn');
         const resumeModal = document.getElementById('resumeModal');
         const closeResumeModal = document.getElementById('closeResumeModal');
         const closeResumeModalBtn = document.getElementById('closeResumeModalBtn');
-
+        
         viewResumeBtn.addEventListener('click', () => {
             resumeModal.style.display = 'block';
             document.body.style.overflow = 'hidden';
         });
-
+        
         closeResumeModal.addEventListener('click', () => {
             resumeModal.style.display = 'none';
             document.body.style.overflow = 'auto';
         });
-
+        
         closeResumeModalBtn.addEventListener('click', () => {
             resumeModal.style.display = 'none';
             document.body.style.overflow = 'auto';
         });
-
+        
         // Generic modal handling
         document.querySelectorAll('[data-modal]').forEach(element => {
             element.addEventListener('click', () => {
@@ -145,14 +170,14 @@
                 document.body.style.overflow = 'hidden';
             });
         });
-
+        
         document.querySelectorAll('.close-modal').forEach(closeBtn => {
             closeBtn.addEventListener('click', function() {
                 this.closest('.modal').style.display = 'none';
                 document.body.style.overflow = 'auto';
             });
         });
-
+        
         // Close modal when clicking outside content
         window.addEventListener('click', (e) => {
             if (e.target.classList.contains('modal')) {
@@ -169,7 +194,7 @@
                 document.body.style.overflow = 'auto';
             });
         });
-
+    
         // Close modal when clicking outside
         window.addEventListener('click', function(e) {
             if (e.target.classList.contains('modal')) {
@@ -177,7 +202,7 @@
                 document.body.style.overflow = 'auto';
             }
         });
-
+    
         // Responsive iframe resizing
         window.addEventListener('resize', function() {
             document.querySelectorAll('.certificate-box iframe').forEach(iframe => {
@@ -191,43 +216,43 @@
         initTextMorphing();
         enhanceModals();
         initSwiper();
-
+    
         // Add animation delays for skill tags
         document.querySelectorAll('.skill-tag').forEach((tag, index) => {
             tag.style.animationDelay = `${index * 0.1}s`;
         });
     });
-
+        
         // Contact Form
         const contactForm = document.getElementById('contactForm');
-
+        
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-
+            
             // Get form values
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const subject = document.getElementById('subject').value;
             const message = document.getElementById('message').value;
-
+            
             // Here you would typically send the form data to a server
             // For demonstration, we'll just show an alert
             alert(`Thank you, ${name}! Your message has been sent. I'll get back to you soon.`);
-
+            
             // Reset form
             contactForm.reset();
         });
-
+        
         // Intersection Observer for animations
         const animateOnScroll = () => {
             const elements = document.querySelectorAll('.section-title, .about-img, .about-text, .skill-tag, .skill-card, .timeline-item, .experience-card, .project-card, .certification-card, .contact-item, .contact-form');
-
+            
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         if (entry.target.classList.contains('section-title')) {
                             entry.target.classList.add('animate');
-                        }
+                        } 
                         else if (entry.target.classList.contains('about-img')) {
                             entry.target.classList.add('animate');
                         }
@@ -268,58 +293,58 @@
                 threshold: 0.1,
                 rootMargin: '0px 0px -50px 0px'
             });
-
+            
             elements.forEach(element => {
                 observer.observe(element);
             });
         };
-
+        
         // Initialize animations when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
             animateOnScroll();
-
+            
             // Add animation delays for skill tags
             document.querySelectorAll('.skill-tag').forEach((tag, index) => {
                 tag.style.animationDelay = `${index * 0.1}s`;
             });
-
+            
             // Add animation delays for contact items
             document.querySelectorAll('.contact-item').forEach((item, index) => {
                 item.style.animationDelay = `${index * 0.1}s`;
             });
         });
-
+        
         // iOS Viewport Height Fix
         const setViewportHeight = () => {
             let vh = window.innerHeight * 0.01;
             document.documentElement.style.setProperty('--vh', `${vh}px`);
         };
-
+        
         window.addEventListener('resize', setViewportHeight);
         setViewportHeight();
 
         // Text morphing animation
 function initTextMorphing() {
     const textMorphElements = document.querySelectorAll('.text-morph');
-
+    
     textMorphElements.forEach(element => {
         const texts = JSON.parse(element.getAttribute('data-texts'));
         let currentIndex = 0;
         let currentText = '';
         let isDeleting = false;
         let typingSpeed = 150;
-
+        
         function type() {
             const fullText = texts[currentIndex];
-
+            
             if (isDeleting) {
                 currentText = fullText.substring(0, currentText.length - 1);
             } else {
                 currentText = fullText.substring(0, currentText.length + 1);
             }
-
+            
             element.textContent = currentText;
-
+            
             if (!isDeleting && currentText === fullText) {
                 typingSpeed = 1000;
                 isDeleting = true;
@@ -330,10 +355,10 @@ function initTextMorphing() {
             } else {
                 typingSpeed = isDeleting ? 50 : 150;
             }
-
+            
             setTimeout(type, typingSpeed);
         }
-
+        
         type();
     });
 }
