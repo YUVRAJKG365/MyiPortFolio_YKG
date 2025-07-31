@@ -95,12 +95,12 @@ const initSwiper = () => {
         // Mobile Navigation
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
-
+        
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             hamburger.innerHTML = navLinks.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
-
+        
         // Close mobile menu when clicking a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
@@ -108,15 +108,15 @@ const initSwiper = () => {
                 hamburger.innerHTML = '<i class="fas fa-bars"></i>';
             });
         });
-
+        
         // Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-
+                
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
-
+                
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     window.scrollTo({
@@ -126,18 +126,18 @@ const initSwiper = () => {
                 }
             });
         });
-
+        
         // Scroll Indicator
         const scrollIndicator = document.getElementById('scrollIndicator');
-
+        
         window.addEventListener('scroll', () => {
             const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrollProgress = (scrollTop / scrollHeight) * 100;
             scrollIndicator.style.width = `${scrollProgress}%`;
         });
-
-
+        
+        
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
                 fab.classList.add('active');
@@ -145,28 +145,28 @@ const initSwiper = () => {
                 fab.classList.remove('active');
             }
         });
-
+        
         // Modal Functionality
         const viewResumeBtn = document.getElementById('viewResumeBtn');
         const resumeModal = document.getElementById('resumeModal');
         const closeResumeModal = document.getElementById('closeResumeModal');
         const closeResumeModalBtn = document.getElementById('closeResumeModalBtn');
-
+        
         viewResumeBtn.addEventListener('click', () => {
             resumeModal.style.display = 'block';
             document.body.style.overflow = 'hidden';
         });
-
+        
         closeResumeModal.addEventListener('click', () => {
             resumeModal.style.display = 'none';
             document.body.style.overflow = 'auto';
         });
-
+        
         closeResumeModalBtn.addEventListener('click', () => {
             resumeModal.style.display = 'none';
             document.body.style.overflow = 'auto';
         });
-
+        
         // Generic modal handling
         document.querySelectorAll('[data-modal]').forEach(element => {
             element.addEventListener('click', () => {
@@ -176,14 +176,14 @@ const initSwiper = () => {
                 document.body.style.overflow = 'hidden';
             });
         });
-
+        
         document.querySelectorAll('.close-modal').forEach(closeBtn => {
             closeBtn.addEventListener('click', function() {
                 this.closest('.modal').style.display = 'none';
                 document.body.style.overflow = 'auto';
             });
         });
-
+        
         // Close modal when clicking outside content
         window.addEventListener('click', (e) => {
             if (e.target.classList.contains('modal')) {
@@ -200,7 +200,7 @@ const initSwiper = () => {
                 document.body.style.overflow = 'auto';
             });
         });
-
+    
         // Close modal when clicking outside
         window.addEventListener('click', function(e) {
             if (e.target.classList.contains('modal')) {
@@ -208,7 +208,7 @@ const initSwiper = () => {
                 document.body.style.overflow = 'auto';
             }
         });
-
+    
         // Responsive iframe resizing
         window.addEventListener('resize', function() {
             document.querySelectorAll('.certificate-box iframe').forEach(iframe => {
@@ -222,29 +222,29 @@ const initSwiper = () => {
         initTextMorphing();
         enhanceModals();
         initSwiper();
-
+    
         // Add animation delays for skill tags
         document.querySelectorAll('.skill-tag').forEach((tag, index) => {
             tag.style.animationDelay = `${index * 0.1}s`;
         });
     });
-
+        
         // Contact Form Submission
         const contactForm = document.getElementById('contactForm');
         const formStatus = document.getElementById('formStatus');
 
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-
+    
             // Set reply-to email
             document.getElementById('replyTo').value = document.getElementById('email').value;
-
+    
             const formData = new FormData(contactForm);
-
+    
             try {
                 formStatus.textContent = 'Sending message...';
                 formStatus.style.color = 'var(--text-color)';
-
+        
                 const response = await fetch(contactForm.action, {
                     method: 'POST',
                     body: formData,
@@ -252,7 +252,7 @@ const initSwiper = () => {
                         'Accept': 'application/json'
                     }
                 });
-
+        
                 if (response.ok) {
                     formStatus.textContent = 'Message sent successfully! I\'ll get back to you soon.';
                     formStatus.style.color = 'lightgreen';
@@ -266,17 +266,17 @@ const initSwiper = () => {
                 console.error('Error:', error);
             }
         });
-
+        
         // Intersection Observer for animations
         const animateOnScroll = () => {
             const elements = document.querySelectorAll('.section-title, .about-img, .about-text, .skill-tag, .skill-card, .timeline-item, .experience-card, .project-card, .certification-card, .contact-item, .open-to-work-card,.contact-form');
-
+            
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         if (entry.target.classList.contains('section-title')) {
                             entry.target.classList.add('animate');
-                        }
+                        } 
                         else if (entry.target.classList.contains('about-img')) {
                             entry.target.classList.add('animate');
                         }
@@ -308,7 +308,7 @@ const initSwiper = () => {
                         else if (entry.target.classList.contains('contact-item')) {
                             entry.target.classList.add('animate');
                         }
-                        else if (entry.target.classList.contains('open-to-work-card') ||
+                        else if (entry.target.classList.contains('open-to-work-card') || 
                                 entry.target.classList.contains('contact-form')) {
                                 entry.target.classList.add('animate');
                         }
@@ -318,58 +318,59 @@ const initSwiper = () => {
                 threshold: 0.1,
                 rootMargin: '0px 0px -50px 0px'
             });
-
+            
             elements.forEach(element => {
                 observer.observe(element);
             });
         };
-
+        
         // Initialize animations when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
             animateOnScroll();
-
+            
             // Add animation delays for skill tags
             document.querySelectorAll('.skill-tag').forEach((tag, index) => {
                 tag.style.animationDelay = `${index * 0.1}s`;
             });
-
+            
             // Add animation delays for contact items
             document.querySelectorAll('.contact-item').forEach((item, index) => {
                 item.style.animationDelay = `${index * 0.1}s`;
             });
         });
-
+        
         // iOS Viewport Height Fix
         const setViewportHeight = () => {
             let vh = window.innerHeight * 0.01;
             document.documentElement.style.setProperty('--vh', `${vh}px`);
         };
-
+        
         window.addEventListener('resize', setViewportHeight);
         setViewportHeight();
+        
 
         // Text morphing animation
 function initTextMorphing() {
     const textMorphElements = document.querySelectorAll('.text-morph');
-
+    
     textMorphElements.forEach(element => {
         const texts = JSON.parse(element.getAttribute('data-texts'));
         let currentIndex = 0;
         let currentText = '';
         let isDeleting = false;
         let typingSpeed = 150;
-
+        
         function type() {
             const fullText = texts[currentIndex];
-
+            
             if (isDeleting) {
                 currentText = fullText.substring(0, currentText.length - 1);
             } else {
                 currentText = fullText.substring(0, currentText.length + 1);
             }
-
+            
             element.textContent = currentText;
-
+            
             if (!isDeleting && currentText === fullText) {
                 typingSpeed = 1000;
                 isDeleting = true;
@@ -380,10 +381,37 @@ function initTextMorphing() {
             } else {
                 typingSpeed = isDeleting ? 50 : 150;
             }
-
+            
             setTimeout(type, typingSpeed);
         }
-
+        
         type();
     });
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll(
+        '.skill-card, .project-card, .certification-card, ' +
+        '.experience-card, .timeline-content, ' +
+        '.open-to-work-card, .contact-form'
+    );
+    
+    // Initialize Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('card-visible');
+                // Optional: Unobserve after animation
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    // Observe all cards
+    cards.forEach(card => {
+        observer.observe(card);
+    });
+});
