@@ -15,30 +15,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="assests/css/style.css">
-        <style>
-        /* Hero Section Animation */
-.hero {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeUp 1s ease-out forwards;
-    animation-delay: 0.3s;
-}
-
-@keyframes fadeUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Ensure the animation works on all devices */
-@media (max-width: 1024px) {
-    .hero {
-        animation: fadeUp 1s ease-out forwards;
-        animation-delay: 0.3s;
-    }
-}
-    </style>
 </head>
 <body>
     <!-- Background Animation -->
@@ -1107,21 +1083,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="assests/js/script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-    // Force reflow to trigger animation on all devices
-    const hero = document.querySelector('.hero');
-    void hero.offsetWidth; // Trigger reflow
-    
-    // Add class to start animation (if needed)
-    hero.classList.add('animate-hero');
-    
-    // Or alternatively, you can use this approach:
-    setTimeout(() => {
-        hero.style.opacity = '1';
-        hero.style.transform = 'translateY(0)';
-    }, 300);
-});
-    </script>
 </body>
 </html>
