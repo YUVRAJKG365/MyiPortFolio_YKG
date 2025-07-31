@@ -1107,5 +1107,21 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="assests/js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // Force reflow to trigger animation on all devices
+    const hero = document.querySelector('.hero');
+    void hero.offsetWidth; // Trigger reflow
+    
+    // Add class to start animation (if needed)
+    hero.classList.add('animate-hero');
+    
+    // Or alternatively, you can use this approach:
+    setTimeout(() => {
+        hero.style.opacity = '1';
+        hero.style.transform = 'translateY(0)';
+    }, 300);
+});
+    </script>
 </body>
 </html>
