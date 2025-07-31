@@ -348,6 +348,49 @@ nav {
     padding-left: 20px;
 }
 
+/* Base Card Styles - Always Visible */
+.certification-card {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    border: 1px solid transparent;
+}
+
+/* Hover Effects */
+.certification-card:hover {
+    border-color: #9d50bb;
+    box-shadow: 0 10px 30px rgba(157, 80, 187, 0.3);
+    transform: translateY(-5px);
+    opacity: 0.98 !important;
+}
+
+/* Image Hover Effect */
+.certification-card:hover .certification-img {
+    transform: scale(1.05);
+}
+
+/* Overlay Effect */
+.certification-card:hover .certification-overlay {
+    opacity: 1;
+    background: rgba(157, 80, 187, 0.7);
+}
+
+/* Link Hover Effect */
+.certification-link:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Modal Hover Effect */
+.modal-content:hover {
+    border: 1px solid #9d50bb;
+    box-shadow: 0 15px 40px rgba(157, 80, 187, 0.25);
+}
+
+/* Remove any initial animation classes that might be hiding cards */
+.certification-card.animate {
+    animation: none !important;
+}
 /* Responsive Styles */
 @media (max-width: 768px) {
     .nav-links {
@@ -732,6 +775,7 @@ nav {
         </div>
     </div>
 
+   
     <!-- Footer -->
 <footer>
     <div class="container">
@@ -801,6 +845,16 @@ nav {
                 document.body.style.overflow = 'auto';
             }
         });
+
+        // Add this JavaScript to handle hover effects
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize all cards as visible
+    const cards = document.querySelectorAll('.certification-card');
+    cards.forEach(card => {
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+    });
+});
     </script>
 </body>
 </html>
