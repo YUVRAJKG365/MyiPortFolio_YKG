@@ -1689,105 +1689,41 @@ gap: 30px;
 }
 
 @media (max-width: 768px) {
-    /* Floating Mobile Navigation */
     .nav-links {
-        position: fixed;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 90%;
-        max-width: 350px;
-        height: auto;
-        background: rgba(26, 26, 46, 0.95);
-        backdrop-filter: blur(10px);
-        border-radius: 50px;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        gap: 0;
-        padding: 12px 15px;
-        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
-        z-index: 1000;
-        transition: var(--transition);
+position: fixed;
+top: 0;
+left: -100%;
+width: 80%;
+max-width: 300px;
+height: 100vh;
+background: var(--dark-color);
+flex-direction: column;
+align-items: flex-start;
+justify-content: center;
+gap: 30px;
+transition: var(--transition);
+z-index: 1000;
+padding: 80px 30px;
+box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
     }
-
+    
     .nav-links.active {
-        transform: translateX(-50%);
+left: 0;
     }
-
+    
     .nav-links li {
-        margin: 0;
-        width: auto;
+margin-left: 0;
+width: 100%;
     }
-
+    
     .nav-links a {
-        font-size: 1rem;
-        padding: 8px 12px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
+font-size: 1.2rem;
+display: block;
+padding: 10px 0;
     }
-
-    .nav-links a::after {
-        display: none;
-    }
-
-    .nav-links a i {
-        font-size: 1.2rem;
-        display: block;
-    }
-
-    .nav-links a span {
-        font-size: 0.7rem;
-    }
-
-    /* Hamburger menu becomes a floating action button */
+    
     .hamburger {
-        position: fixed;
-        bottom: 80px;
-        right: 20px;
-        width: 50px;
-        height: 50px;
-        background: var(--secondary-color);
-        color: white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        box-shadow: 0 4px 15px rgba(157, 80, 187, 0.4);
-        z-index: 1001;
-        transition: var(--transition);
-    }
-
-    .hamburger:hover {
-        transform: translateY(-3px);
-        background: var(--primary-color);
-    }
-
-    /* Modal close button stays in top right */
-    .close-modal {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        width: 36px;
-        height: 36px;
-        font-size: 1.3rem;
-        background: rgba(255, 255, 255, 0.1);
-        border: none;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--text-color);
-        cursor: pointer;
-        z-index: 1;
-    }
-
-    .modal-content {
-        padding-top: 60px;
-        padding-bottom: 40px;
+display: block;
     }
     
     .hero h1 {
@@ -1820,10 +1756,6 @@ display: none;
     
     .experience-cards {
 display: grid;
-    }
-    
-    .modal-content {
-padding: 20px;
     }
     
     .modal-header h2 {
@@ -1868,6 +1800,29 @@ height: 250px;
     
     .modal-footer .btn {
         width: 100%;
+    }
+    /* Modal close button stays in top right */
+    .close-modal {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 36px;
+        height: 36px;
+        font-size: 1.3rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-color);
+        cursor: pointer;
+        z-index: 1;
+    }
+
+    .modal-content {
+        padding-top: 60px;
+        padding-bottom: 40px;
     }
 }
 
