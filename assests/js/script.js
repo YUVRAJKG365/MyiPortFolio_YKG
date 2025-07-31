@@ -1,66 +1,97 @@
-    const initSwiper = () => {
-        const swiper = new Swiper('.swiper', {
-            slidesPerView: 'auto',
-            spaceBetween: 20,
-            centeredSlides: false,
-            loop: false,
-            grabCursor: true,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-                dynamicBullets: true,
+const initSwiper = () => {
+    const swiper = new Swiper('.swiper', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        centeredSlides: false,
+        loop: false,
+        grabCursor: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            dynamicBullets: true,
+        },
+        breakpoints: {
+            576: {
+                slidesPerView: 1,
+                spaceBetween: 20
             },
-            breakpoints: {
-                320: {
-                    slidesPerView: 1,
-                    spaceBetween: 15
-                },
-                576: {
-                    slidesPerView: 1,
-                    spaceBetween: 20
-                },
-                768: {
-                    slidesPerView: 2,
-                    spaceBetween: 25
-                },
-                992: {
-                    slidesPerView: 3,
-                    spaceBetween: 30
-                }
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 25
             },
-            // Enable iOS edge swipe detection
-            edgeSwipeDetection: true,
-            edgeSwipeThreshold: 20,
-            // Better touch support
-            touchStartPreventDefault: false,
-            touchRatio: 0.5,
-            simulateTouch: true,
-            shortSwipes: true,
-            longSwipes: true,
-            longSwipesRatio: 0.5,
-            longSwipesMs: 300,
-            followFinger: true,
-            preventInteractionOnTransition: true
-        });
-        // Force Swiper to update on resize
-        window.addEventListener('resize', () => {
-            swiper.update();
-        });
+            992: {
+                slidesPerView: 3,
+                spaceBetween: 30
+            }
+        },
+        // Enable iOS edge swipe detection
+        edgeSwipeDetection: true,
+        edgeSwipeThreshold: 20,
+        // Better touch support
+        touchStartPreventDefault: false,
+        touchRatio: 0.5,
+        simulateTouch: true,
+        shortSwipes: true,
+        longSwipes: true,
+        longSwipesRatio: 0.5,
+        longSwipesMs: 300,
+        followFinger: true,
+        preventInteractionOnTransition: true,
+        on: {
+            init: function() {
+                // Make ALL slides visible on init
+                this.slides.forEach(slide => {
+                    slide.style.opacity = 1;
+                    slide.style.transform = 'translateY(0)';
+                });
+            },
+            slideChange: function() {
+                // Keep ALL slides visible during navigation
+                this.slides.forEach(slide => {
+                    slide.style.opacity = 1;
+                    slide.style.transform = 'translateY(0)';
+                });
+            }
+        }
+    });
 
-        // Initialize animations for visible slides
-        swiper.on('slideChange', function() {
-            document.querySelectorAll('.swiper-slide').forEach(slide => {
-                if (slide.classList.contains('swiper-slide-active')) {
-                    slide.classList.add('animate');
+    // Force Swiper to update on resize
+    window.addEventListener('resize', () => {
+        swiper.update();
+    });
+
+    // Click event for certification cards
+    document.querySelectorAll('.certification-card').forEach(card => {
+        card.addEventListener('click', function() {
+            const modalId = this.getAttribute('data-modal');
+            if (modalId) {
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
                 }
-            });
+            }
         });
+    });
+};
 
-        // Initialize first set of slides
-        document.querySelectorAll('.swiper-slide-active').forEach(slide => {
-            slide.classList.add('animate');
+
+    // Handle modal close events
+    document.querySelectorAll('.close-modal').forEach(btn => {
+        btn.addEventListener('click', function() {
+            this.closest('.modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
         });
-    };
+    });
+
+    // Close modal when clicking outside content
+    window.addEventListener('click', (e) => {
+        if (e.target.classList.contains('modal')) {
+            e.target.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+
         // Mobile Navigation
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
@@ -198,29 +229,47 @@
         });
     });
 
-        // Contact Form
+        // Contact Form Submission
         const contactForm = document.getElementById('contactForm');
+        const formStatus = document.getElementById('formStatus');
 
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
+            // Set reply-to email
+            document.getElementById('replyTo').value = document.getElementById('email').value;
 
-            // Here you would typically send the form data to a server
-            // For demonstration, we'll just show an alert
-            alert(`Thank you, ${name}! Your message has been sent. I'll get back to you soon.`);
+            const formData = new FormData(contactForm);
 
-            // Reset form
-            contactForm.reset();
+            try {
+                formStatus.textContent = 'Sending message...';
+                formStatus.style.color = 'var(--text-color)';
+
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    formStatus.textContent = 'Message sent successfully! I\'ll get back to you soon.';
+                    formStatus.style.color = 'lightgreen';
+                    contactForm.reset();
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                formStatus.textContent = 'Oops! There was a problem sending your message. Please try again later.';
+                formStatus.style.color = '#ff6b6b';
+                console.error('Error:', error);
+            }
         });
 
         // Intersection Observer for animations
         const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.section-title, .about-img, .about-text, .skill-tag, .skill-card, .timeline-item, .experience-card, .project-card, .certification-card, .contact-item, .contact-form');
+            const elements = document.querySelectorAll('.section-title, .about-img, .about-text, .skill-tag, .skill-card, .timeline-item, .experience-card, .project-card, .certification-card, .contact-item, .open-to-work-card,.contact-form');
 
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -259,8 +308,9 @@
                         else if (entry.target.classList.contains('contact-item')) {
                             entry.target.classList.add('animate');
                         }
-                        else if (entry.target.classList.contains('contact-form')) {
-                            entry.target.classList.add('animate');
+                        else if (entry.target.classList.contains('open-to-work-card') ||
+                                entry.target.classList.contains('contact-form')) {
+                                entry.target.classList.add('animate');
                         }
                     }
                 });
