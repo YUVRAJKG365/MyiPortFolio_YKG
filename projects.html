@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Safari-specific: Fullscreen app mode on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Android-specific: Chrome web app -->
     <meta name="mobile-web-app-capable" content="yes">
     <title>Yuvraj Kumar Gond | Projects</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assests/css/style.css">
     <style>
@@ -587,21 +590,20 @@ nav {
                         <p class="view-more">View Details</p>
                     </div>
                 </div>
-
                 <!-- Project 4 -->
                 <div class="project-card" data-modal="modal8">
                     <div class="project-image">
-                        <i class="fas fa-leaf"></i>
+                        <i class="fas fa-heartbeat"></i>
                     </div>
                     <div class="project-content">
-                        <h3>Sustainability-Focused Data Analytics Dashboard</h3>
+                        <h3>CardioCare AI- Heart Disease Prediction & Detection</h3>
                         <div class="project-tech">
                             <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Pandas</span>
-                            <span class="tech-tag">scikit-learn</span>
-                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">Machine Learning</span>
                         </div>
-                        <p>Analyzed energy consumption and resource-use datasets to identify inefficiencies and propose actionable sustainability strategies...</p>
+                        <p>Developed a heart disease prediction and detection system using machine learning algorithms.....</p>
                         <p class="view-more">View Details</p>
                     </div>
                 </div>
@@ -609,17 +611,35 @@ nav {
                 <!-- Project 5 -->
                 <div class="project-card" data-modal="modal9">
                     <div class="project-image">
-                        <i class="fas fa-plane"></i>
+                        <i class="fas fa-user"></i>
                     </div>
                     <div class="project-content">
-                        <h3>RC Aeromodel Prototype</h3>
+                        <h3>Delinquency Prediction</h3>
                         <div class="project-tech">
-                            <span class="tech-tag">Arduino</span>
-                            <span class="tech-tag">RF</span>
-                            <span class="tech-tag">Servo Motors</span>
-                            <span class="tech-tag">3D Printing</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">Machine Learning</span>
+                            <span class="tech-tag">Numpy Pandas</span>
                         </div>
-                        <p>Designed and built a scale RC aircraft using authentic aeronautical construction methods with Arduino-based control system...</p>
+                        <p>Developed a system to predict delinquency based on historical data, providing insights into potential risks and enabling proactive measures....</p>
+                        <p class="view-more">View Details</p>
+                    </div>
+                </div>
+
+                <div class="project-card" data-modal="modal10">
+                    <div class="project-image">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Stocks Prediction</h3>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">Scikit Learn</span>
+                            <span class="tech-tag">Matplotlib & Plotly</span>
+                            <span class="tech-tag">Machine Learning</span>
+                        </div>
+                        <p>A web application to predict stock prices using historical data of sales & productions and machine learning algorithms...</p>
                         <p class="view-more">View Details</p>
                     </div>
                 </div>
@@ -658,7 +678,7 @@ nav {
                 </div>
                 
                 <div class="modal-footer">
-                    <a href="https://github.com/YUVRAJKG365" class="btn" target="_blank">View on GitHub</a>
+                    <a href="https://github.com/YUVRAJKG365/FACIAL-EMOTION-RECOGNITION-BY-YUVRAJKG365.git" class="btn" target="_blank">View on GitHub</a>
                 </div>
             </div>
         </div>
@@ -666,39 +686,96 @@ nav {
 
     <!-- Modal 2 -->
     <div class="modal" id="modal6">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-header">
-                <h2>Exploratory Data Analysis Platform</h2>
-                <p>Python, Streamlit, Gemini API, NLP</p>
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-header">
+            <h2>EDA App – AI-Powered Exploratory Data Analysis Platform</h2>
+            <p>Python, Streamlit, Gemini API, scikit-learn, NLP</p>
+        </div>
+        <div class="modal-body">
+            <h3>Project Description</h3>
+            <p>EDA_App_YKG is an all-in-one, AI-integrated Exploratory Data Analysis platform developed by Yuvraj Kumar Gond using Streamlit. The app enables end-to-end data workflows including data cleaning, visualization, machine learning, document/image analysis, SQL querying, and natural language processing — all supported by a powerful AI assistant and 10+ machine learning models.</p>
+            <p><strong>Note:</strong> This project is an academic and portfolio-level demonstration. It is not open-source and not designed for clinical, commercial, or production use.</p>
+
+            <h3>Highlights</h3>
+            <ul>
+                <li>✅ Upload and explore structured, text, image, and PDF data</li>
+                <li>✅ Modular UI: Clean, animated, and performance-optimized</li>
+                <li>✅ Visual storytelling with interactive charts</li>
+                <li>✅ Run ML models and analyze predictions without writing code</li>
+                <li>✅ Use NLP for summarization, sentiment, and keyword extraction</li>
+                <li>✅ Ask questions and get insights with Gemini AI Assistant</li>
+                <li>✅ Ideal for data analysts, AI engineers, educators & students</li>
+            </ul>
+
+            <h3>Modules at a Glance</h3>
+            <ul>
+                <li><strong>🏠 Home</strong> – Upload files and start exploring</li>
+                <li><strong>🧹 Data Cleaning</strong> – Null handling, formatting, filtering</li>
+                <li><strong>📈 Visualizations</strong> – Heatmaps, correlation plots, scatter, bar, pie</li>
+                <li><strong>⏳ Time Series</strong> – Forecasting, trend and seasonality analysis</li>
+                <li><strong>🤖 Machine Learning</strong> – Train & test models with no-code UI</li>
+                <li><strong>🔤 NLP</strong> – Sentiment analysis, keyword extraction, word clouds</li>
+                <li><strong>🖼️ Image Analysis</strong> – OCR from images and PDFs</li>
+                <li><strong>💬 Chatbot</strong> – AI-powered Gemini Assistant Analyst</li>
+                <li><strong>🗄️ SQL Query</strong> – Write and execute SQL queries on data</li>
+                <li><strong>📤 Extraction</strong> – Extract text from image/PDF and scanned content</li>
+            </ul>
+
+            <h3>ML, NLP & AI Integrations</h3>
+            <p><strong>🔬 Machine Learning Models Used</strong></p>
+            <ul>
+                <li>Logistic Regression</li>
+                <li>Decision Tree Classifier</li>
+                <li>Random Forest Classifier</li>
+                <li>XGBoost Classifier</li>
+                <li>Support Vector Machine (SVM)</li>
+                <li>K-Nearest Neighbors (KNN)</li>
+                <li>Gradient Boosting</li>
+                <li>Naive Bayes</li>
+                <li>Linear Regression</li>
+                <li>ARIMA / Seasonal Decomposition (Time Series)</li>
+                <li>Ensemble Voting Classifiers</li>
+                <li>Dimensionality Reduction (PCA, t-SNE for visualization)</li>
+            </ul>
+
+            <p><strong>📘 NLP Techniques</strong></p>
+            <ul>
+                <li>Sentiment Analysis (TextBlob / VADER)</li>
+                <li>Keyword Extraction</li>
+                <li>Named Entity Recognition</li>
+                <li>Word Cloud Generation</li>
+                <li>Summarization (via frequency-based techniques)</li>
+            </ul>
+
+            <p><strong>🤝 Gemini AI Integration</strong></p>
+            <ul>
+                <li>💬 Gemini AI Assistant acts as your smart EDA guide</li>
+                <li>Get auto-suggestions, interpretation of visualizations, column explanations, or even dataset summarization</li>
+                <li>Ask questions like:
+                    <ul>
+                        <li>“What columns are correlated?”</li>
+                        <li>“Which feature affects prediction most?”</li>
+                        <li>“What does this visualization mean?”</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>Technologies Used</h3>
+            <p>Python, Streamlit, Pandas, NumPy, scikit-learn, Plotly, Gemini API, NLTK/spacy, OCR (Tesseract), Jupyter Notebook</p>
+
+            <h3>Project Demo</h3>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
             </div>
-            <div class="modal-body">
-                <h3>Project Description</h3>
-                <p>Built an interactive dashboard that automates data ingestion, cleansing, and feature engineering. Integrated LLM-powered document intelligence to extract text and images from various document formats (including scanned files), executed predictive models, and visualized results with dynamic charts and animated UI components.</p>
-                
-                <h3>Key Features</h3>
-                <ul>
-                    <li>Automated data ingestion and cleansing</li>
-                    <li>LLM-powered document intelligence</li>
-                    <li>Support for various document formats including scanned files</li>
-                    <li>Dynamic visualization with interactive charts</li>
-                    <li>Full SQL query execution support on live datasets</li>
-                </ul>
-                
-                <h3>Technologies Used</h3>
-                <p>Python, Streamlit, Pandas, NumPy, scikit-learn, Plotly, Gemini API, NLTK/spacy</p>
-                
-                <h3>Project Demo</h3>
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-                </div>
-                
-                <div class="modal-footer">
-                    <a href="https://github.com/YUVRAJKG365" class="btn" target="_blank">View on GitHub</a>
-                </div>
+
+            <div class="modal-footer">
+                <a href="https://github.com/YUVRAJKG365/EDA_APP_YKG_365.git" class="btn" target="_blank">View on GitHub</a>
             </div>
         </div>
     </div>
+</div>
+
 
     <!-- Modal 3 -->
     <div class="modal" id="modal7">
@@ -730,83 +807,157 @@ nav {
                 </div>
                 
                 <div class="modal-footer">
-                    <a href="https://github.com/YUVRAJKG365" class="btn" target="_blank">View on GitHub</a>
+                    <a href="https://github.com/YUVRAJKG365/HospitalManagementSystem-YKG365.git" class="btn" target="_blank">View on GitHub</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal 4 -->
     <div class="modal" id="modal8">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-header">
-                <h2>Sustainability-Focused Data Analytics Dashboard</h2>
-                <p>Python, Pandas, scikit-learn, SQL</p>
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-header">
+            <h2>CardioCare AI – Heart Disease Early Detection & Prediction System</h2>
+            <p>Python, Streamlit, scikit-learn, XGBoost, Pandas</p>
+        </div>
+        <div class="modal-body">
+            <h3>Project Description</h3>
+            <p>CardioCare_AI_YKG is an advanced, AI-powered healthcare application developed using Streamlit. It performs early detection and full-scale heart disease prediction using clinical and lifestyle indicators. The system uses machine learning to assess cardiovascular risk and provide actionable insights and visualizations for both healthcare professionals and individuals.</p>
+            <p><strong>Note:</strong> This is an individual project developed by Yuvraj Kumar Gond for academic and demonstration purposes. It is not open source and is not intended for commercial or diagnostic use.</p>
+
+            <h3>Key Features</h3>
+            <ul>
+                <li>🔍 Early heart disease warning system</li>
+                <li>❤️ Full heart disease risk prediction</li>
+                <li>📈 Dynamic risk probability visualization</li>
+                <li>📊 Feature importance and contributing factor analysis</li>
+                <li>🧑‍⚕️ Personalized medical and lifestyle recommendations</li>
+                <li>🧬 Based on real-world clinical datasets</li>
+                <li>🎨 Custom-designed medical-themed UI using Streamlit</li>
+            </ul>
+
+            <h3>Technologies Used</h3>
+            <p>Python, Streamlit, scikit-learn, XGBoost, RandomForest, Pandas, StandardScaler, Jupyter Notebook</p>
+
+            <h3>Input Features</h3>
+            <ul>
+                <li><strong>Early Detection Model</strong>: Age, Sex, Blood Pressure, Cholesterol, Fasting Blood Sugar, BMI, Smoking, Alcohol Intake, Physical Activity, Stress, Sleep Hours, Diet Score, Family History, Diabetes</li>
+                <li><strong>Full Prediction Model</strong>: Includes all above, plus <code>thalach</code> (max heart rate), <code>exang</code> (exercise-induced angina), <code>oldpeak</code> (ST depression), and other derived indicators</li>
+            </ul>
+
+            <h3>Project Demo</h3>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
             </div>
-            <div class="modal-body">
-                <h3>Project Description</h3>
-                <p>Led a team in analyzing energy consumption and resource-use datasets to identify inefficiencies and propose actionable sustainability strategies. Delivered forecasting models and visual reports that shortened stakeholder decision cycles by 20%.</p>
-                
-                <h3>Key Features</h3>
-                <ul>
-                    <li>Analysis of energy consumption and resource-use data</li>
-                    <li>Identification of inefficiencies</li>
-                    <li>Actionable sustainability strategies</li>
-                    <li>Forecasting models</li>
-                    <li>Visual reports for stakeholders</li>
-                </ul>
-                
-                <h3>Technologies Used</h3>
-                <p>Python, Jupyter Notebook, Pandas, NumPy, Matplotlib, scikit-learn, SQL/MySQL</p>
-                
-                <h3>Project Demo</h3>
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-                </div>
-                
-                <div class="modal-footer">
-                    <a href="https://github.com/YUVRAJKG365" class="btn" target="_blank">View on GitHub</a>
-                </div>
+
+            <div class="modal-footer">
+                <a href="https://github.com/YUVRAJKG365/CardioCare_AI_YKG.git" class="btn" target="_blank">View on GitHub</a>
             </div>
         </div>
     </div>
+</div>
 
     <!-- Modal 5 -->
-    <div class="modal" id="modal9">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-header">
-                <h2>RC Aeromodel Prototype</h2>
-                <p>Arduino, RF, Servo Motors, 3D Printing</p>
+<div class="modal" id="modal9">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-header">
+            <h2>Customer Delinquency Prediction System – AI-Powered Risk Assessment</h2>
+            <p>Python, Streamlit, Fairlearn, scikit-learn, imbalanced-learn</p>
+        </div>
+        <div class="modal-body">
+            <h3>Project Description</h3>
+            <p>A production-ready, end-to-end AI system for predicting customer delinquency, developed using real-world behavioral, financial, and demographic data. This system integrates machine learning, bias mitigation, and fairness auditing using the Fairlearn framework, ensuring responsible AI outcomes in high-stakes financial decisioning.</p>
+            <p><strong>Note:</strong> Developed by Yuvraj Kumar Gond as part of a real-world applied AI challenge focused on fairness, explainability, and ethical modeling in finance.</p>
+
+            <h3>Key Features</h3>
+            <ul>
+                <li>✅ Interactive Streamlit App – Real-time delinquency risk prediction & business recommendations</li>
+                <li>🔍 AI Model Pipeline – Logistic Regression & Random Forest with class balancing (SMOTE/upsampling)</li>
+                <li>📈 Explainable Risk Drivers – DTI ratio, missed payments, employment status, late fees, credit utilization</li>
+                <li>🧠 Fairlearn Integration – Ensures fairness across employment type, location, and other sensitive features</li>
+                <li>📊 Bias Auditing Dashboard – Demographic Parity, Equalized Odds, and subgroup fairness metrics</li>
+                <li>💡 Smart Recommendations – Insights for support and collection teams</li>
+                <li>🔐 Ethical AI by Design – Emphasis on transparency, fairness, and human-centered AI</li>
+            </ul>
+
+            <h3>Model Performance</h3>
+            <ul>
+                <li>Accuracy: 88.8%</li>
+                <li>Precision: 94%</li>
+                <li>Recall (TPR): 91%</li>
+                <li>Demographic Parity Δ: 0.237</li>
+                <li>Equalized Odds Δ: 0.091</li>
+                <li>✅ Post-processing with Fairlearn significantly reduces bias while maintaining performance</li>
+            </ul>
+
+            <h3>Business Use Case</h3>
+            <ul>
+                <li>🔎 Identify high-risk customers 90 days in advance</li>
+                <li>🎯 Target pre-default intervention</li>
+                <li>💸 Reduce collections cost by up to 35%</li>
+                <li>✅ Improve compliance with ethical and legal AI standards</li>
+                <li>🤝 Build customer trust through transparency</li>
+            </ul>
+
+            <h3>Technologies Used</h3>
+            <p>Python, scikit-learn, Pandas, Streamlit, Fairlearn, imbalanced-learn, Joblib, Jupyter Notebook</p>
+
+            <h3>Project Demo</h3>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
             </div>
-            <div class="modal-body">
-                <h3>Project Description</h3>
-                <p>Designed and built a scale RC aircraft using authentic aeronautical construction methods (airfoil shaping, rib fabrication). Integrated Arduino-based control for throttle, rudder, ailerons, and elevator, achieving stable, controllable flight.</p>
-                
-                <h3>Key Features</h3>
-                <ul>
-                    <li>Authentic aeronautical construction methods</li>
-                    <li>Arduino-based control system</li>
-                    <li>RF transmitter/receiver for remote control</li>
-                    <li>Servo-driven control surfaces</li>
-                    <li>Stable, controllable flight performance</li>
-                </ul>
-                
-                <h3>Technologies Used</h3>
-                <p>Arduino, RF Transmitter/Receiver, Servo Motors, 3D-printed airframe components</p>
-                
-                <h3>Project Demo</h3>
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-                </div>
-                
-                <div class="modal-footer">
-                    <a href="https://github.com/YUVRAJKG365" class="btn" target="_blank">View on GitHub</a>
-                </div>
+
+            <div class="modal-footer">
+                <a href="https://github.com/YUVRAJKG365/Delinquent_YKG_365.git" class="btn" target="_blank">View on GitHub</a>
             </div>
         </div>
     </div>
+</div>
+
+<div class="modal" id="modal10">
+    <div class="modal-content"> 
+        <span class="close-modal">&times;</span>
+        <div class="modal-header">
+            <h2>Stocks Demand Forecast Pro</h2>
+            <p>Python, Streamlit, Random Forest, Pandas, Plotly</p>
+        </div>
+        <div class="modal-body">
+            <h3>Project Description</h3>
+            <p>Stocks Demand Forecast Pro is an AI-powered inventory and sales demand forecasting system built with Streamlit, designed to help e-commerce and retail businesses optimize stock levels, pricing strategies, and replenishment planning. It uses machine learning models (Random Forest) and rich UI/UX for interactive forecasting.</p>
+
+            <h3>Key Features</h3>
+            <ul>
+                <li>🔮 Smart Demand Forecasting for selected date, brand, and category</li>
+                <li>📊 7-Day Forecast Visualization with upper/lower bounds</li>
+                <li>📦 Inventory Recommendations with reorder logic</li>
+                <li>💰 Dynamic Pricing Strategy Tips</li>
+                <li>🔍 Feature Importance Analysis using model insights</li>
+                <li>⚙️ User-friendly sidebar controls for input selection</li>
+                <li>🎨 Stylish & responsive UI with custom CSS and Lottie animations</li>
+            </ul>
+
+            <h3>How It Works</h3>
+            <ul>
+                <li>Trained <code>RandomForestRegressor</code> model for demand forecasting</li>
+                <li>Uses encoded categorical features like <strong>Category & Brand</strong></li>
+                <li>Incorporates <strong>Discount Percentage</strong> and <strong>Date-based features</strong> (DayOfWeek, Quarter, IsHoliday, etc.)</li>
+                <li>Applies <strong>Lag Features</strong> such as <code>Lag_1</code>, <code>Lag_7</code>, and <code>RollingMean_7</code></li>
+            </ul>
+
+            <h3>Technologies Used</h3>
+            <p>Python, Streamlit, Pandas, NumPy, RandomForestRegressor, Scikit-learn, Plotly, Custom CSS, Lottie Animations, Jupyter Notebook</p>
+
+            <h3>Project Demo</h3>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+            </div>
+            <div class="modal-footer">
+                <a href="https://github.com/YUVRAJKG365/Stocks_Prediction_YKG.git" class="btn" target="_blank">View on GitHub</a>
+            </div>
+        </div>
+    </div>
+</div>
 
     <!-- Footer -->
 <footer>
