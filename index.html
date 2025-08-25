@@ -3,13 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Safari-specific: Fullscreen app mode on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <!-- Android-specific: Chrome web app -->
     <meta name="mobile-web-app-capable" content="yes">
     <title>Yuvraj Kumar Gond | Data Analyst | AI & ML | Prompt Engineer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assests/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assests\css\style.css">
 </head>
 <body>
     <!-- Background Animation -->
@@ -61,15 +66,15 @@
 
     <section class="section" id="about">
     <div class="container">
-        <h2 class="section-title">About Me</h2>
+        <h2 class="section-title">
+            <span class="text-morph" data-texts='["Data Analyst", "AI/ML Engineer", "Prompt Engineer"]'></span>
+        </h2>
         <div class="about-content">
             <div class="about-img">
                 <img src="images/mpm.jpeg" alt="Yuvraj Kumar Gond">
             </div>
             <div class="about-text">
-                <h3 class="about-text">
-                    <span class="text-morph" data-texts='["Data Analyst", "AI/ML Engineer", "Prompt Engineer"]'></span>
-                </h3>
+                <h3>AI/ML Engineer and Data Analyst</h3>
                 <p>I have a solid foundation in designing scalable machine learning pipelines and automating data workflows using Python, TensorFlow/Keras, Streamlit, and MySQL. Expert in advanced prompt engineering with leading LLMs including ChatGPT, Claude AI, Gemini AI, and DeepSeek.</p>
                 <p>Skilled at converting complex business challenges into actionable insights that improve operational efficiency and drive informed decision-making. Experienced in aligning AI solutions with strategic objectives across diverse industries, thriving in fast-paced, collaborative environments.</p>
                 <p>Recognized for a research-driven mindset, creativity, and commitment to continuous learning, delivering impactful AI applications that address evolving business needs.</p>
@@ -143,7 +148,7 @@
     <section class="section" id="experience">
         <div class="container">
             <h2 class="section-title">Work Experience</h2>
-            
+
             <!-- Timeline for Desktop -->
             <div class="timeline">
                 <div class="timeline-item left">
@@ -179,7 +184,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Cards for Mobile -->
             <div class="experience-cards">
                 <div class="experience-card" data-modal="modal1">
@@ -295,15 +300,15 @@
                     <div class="swiper-slide">
                         <div class="certification-card" data-modal="modal10">
                             <div class="certification-img-container">
-                                <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1776&q=80" alt="Generative AI Certification" class="certification-img">
+                                <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Oracle OCI Generative AI Professional Certification Badge" class="certification-img">
                                 <div class="certification-overlay">
                                     <i class="fas fa-expand"></i>
                                 </div>
                             </div>
                             <div class="certification-content">
-                                <h3>Generative AI Skills for Creative Content: Opportunities, Issues, and Ethics</h3>
-                                <p>LinkedIn Learning</p>
-                                <a href="https://drive.google.com/file/d/1jkB4vVVPVV9dXsDSQFSR6ROHgljcrV7l" target="_blank" class="certification-link">View Credential</a>
+                                <h3>Oracle Cloud Infrastructure 2025 Certified Generative AI Professional</h3>
+                                <p>Oracle University</p>
+                                <a href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=ADF7F244B7F81D288FE48BA6EC732B3216CFCBE43C78D2D7D8A8952A93A1615C" target="_blank" class="certification-link">View Credential</a>
                             </div>
                         </div>
                     </div>
@@ -432,13 +437,13 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Contact Form Card -->
             <div class="contact-form">
                 <form id="contactForm" action="https://formspree.io/f/xblkdkep" method="POST">
                     <input type="hidden" name="_replyto" value="" id="replyTo">
                     <input type="hidden" name="_subject" value="New Contact Form Submission">
-                    
+
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" class="form-control" required>
@@ -460,7 +465,7 @@
                     </div>
 
                     <button type="submit" class="btn">Send Message</button>
-                    
+
                     <div id="formStatus" class="status-message"></div>
                 </form>
             </div>
@@ -469,28 +474,27 @@
 </section>
 
     <!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/yuvraj-kumar-gond-105a552ba" target="_blank" class="social-link">
-                <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a href="https://github.com/YUVRAJKG365" target="_blank" class="social-link">
-                <i class="fab fa-github"></i>
-            </a>
-            <a href="mailto:yuvrajgona365@gmail.com" class="social-link">
-                <i class="fas fa-envelope"></i>
-            </a>
-            <a href="https://wa.me/918487047066" class="social-link">
-                <i class="fab fa-whatsapp"></i>
-            </a>
-            <a href="https://maps.app.goo.gl/br3WX4SSJWCLTB448" target="_blank" class="social-link">
-                <i class="fas fa-map-marker-alt"></i>
-            </a>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/yuvraj-kumar-gond-105a552ba" class="social-link" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/YUVRAJKG365" class="social-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:yuvrajgona385@gmail.com" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="tel:+918487047066" class="social-link">
+                        <i class="fas fa-phone-alt"></i>
+                    </a>
+                </div>
+                <p class="copyright">© 2023 Yuvraj Kumar Gond. All Rights Reserved.</p>
+            </div>
         </div>
-        <p class="copyright">© 2025 Yuvraj Kumar Gond. All Rights Reserved.</p>
-    </div>
-</footer>
+    </footer>
 
     <!-- Resume Modal -->
     <div class="modal" id="resumeModal">
@@ -503,16 +507,16 @@
             <div class="modal-body">
                 <h3>About Me</h3>
                 <p>AI/ML Engineer and Data Analyst with a solid foundation in designing scalable machine learning pipelines and automating data workflows using Python, TensorFlow/Keras, Streamlit, and MySQL. Expert in advanced prompt engineering with leading LLMs including ChatGPT, Claude AI, Gemini AI, and DeepSeek.</p>
-                
+
                 <h3>Education</h3>
                 <p><strong>Gurukul Kangri Vishwavidyalaya University</strong><br>
                 B.Tech in Computer Science & Engineering (2023-2027)<br>
                 Haridwar, Uttarakhand, India</p>
-                
+
                 <p><strong>Kendriya Vidyalaya</strong><br>
                 Primary - High School, Science - PCM (2011-2023)<br>
                 Silvassa, D&NH UT, India</p>
-                
+
                 <h3>Skills</h3>
                 <ul>
                     <li>Gen AI & APIs</li>
@@ -523,32 +527,33 @@
                     <li>MS Office with Copilot</li>
                     <li>Leadership & Teamwork</li>
                 </ul>
-                
+
                 <h3>Work Experience</h3>
                 <p><strong>ShadowFox – AI & Machine Learning Intern</strong> (Jan-Feb 2025)<br>
                 Developed a real-time Facial Emotion Recognition System featuring a self-learning model that continuously adapts by ingesting new user data in production, ensuring up-to-date performance and improved prediction accuracy—starting with an initial 89% accuracy.</p>
-                
+
                 <p><strong>IBM CSBBOX – Prompt Engineering Intern</strong> (Dec-Jan 2025)<br>
                 Optimized generative AI workflows using ChatGPT, DALLE, Claude AI, and IBM Watson Studio through advanced prompt engineering, boosting content generation speed by 48%.</p>
-                
+
                 <p><strong>IBM CSBOX – Data Analytics Intern, Team Lead</strong> (June-Aug 2024)<br>
                 Led a 5-member team to analyze real-world sustainability datasets, identifying inefficiencies and recommending data-driven strategies.</p>
-                
+
                 <p><strong>TechGyan – Advanced Python Programming</strong> (June-July 2024)<br>
                 Learned advanced Python programming & techniques—including GUI development, email automation, and database backend integration.</p>
-                
+
                 <h3>Projects</h3>
                 <p><strong>Self-Learning Facial Emotion Recognition System</strong><br>
                 Developed a production-ready ML application that captures camera input, classifies facial expressions in real time with 89% initial accuracy.</p>
-                
+
                 <p><strong>Exploratory Data Analysis Platform</strong><br>
                 Built an interactive dashboard that automates data ingestion, cleansing, and feature engineering.</p>
-                
+
                 <p><strong>Automated Hospital Management System</strong><br>
                 Engineered a full-stack solution for bed allocation, inventory tracking, ambulance dispatch, appointment scheduling.</p>
-                
+
                 <h3>Certifications</h3>
                 <ul>
+                    <li>Oracle Cloud Infrastructure 2025 Certified Generative AI Professional</li>
                     <li>Build Your Generative AI Productivity Skills (LinkedIn & Microsoft)</li>
                     <li>Data Fundamentals (LinkedIn)</li>
                     <li>Generative AI in Action (LinkedIn)</li>
@@ -558,7 +563,7 @@
                 </ul>
             </div>
             <div class="modal-footer">
-                <a href="https://drive.google.com/uc?export=download&id=1bpX9eua85TqEheCkhsssn9qDPUWoQl2N" class="btn" download>Download Resume</a>
+                <a href="YUVRAJ KUMAR GOND.pdf" class="btn" download>Download Resume</a>
                 <button class="btn btn-outline" id="closeResumeModalBtn">Close</button>
             </div>
         </div>
@@ -582,10 +587,10 @@
                         <li>Achieved initial accuracy of 89% with continuous improvement mechanism</li>
                         <li>Created an intuitive emotion scoring and emoji-based interface</li>
                     </ul>
-                    
+
                     <h3>Technologies Used</h3>
                     <p>Python, OpenCV, TensorFlow/Keras, Streamlit, NumPy, Pandas</p>
-                    
+
                     <h3>Achievements</h3>
                     <ul>
                         <li>Developed a production-ready system that continuously improves its performance</li>
@@ -593,17 +598,17 @@
                         <li>Implemented a robust data pipeline for continuous learning</li>
                     </ul>
                 </div>
-                
+
                 <div class="certificate-container">
                     <div class="certificate-box">
                         <h3>Certificate</h3>
                         <iframe src="https://drive.google.com/file/d/1JnTkF0UKiL7gWYbCx8Hx06OUOWCw5vVQ/preview" frameborder="0"></iframe>
-                        <a href="https://drive.google.com/file/d/1JnTkF0UKiL7gWYbCx8Hx06OUOWCw5vVQ" class="btn">View Certificate</a>
+                        <a href="https://drive.google.com/file/d/1JnTkF0UKiL7gWYbCx8Hx06OUOWCw5vVQ" ></a>
                     </div>
                     <div class="certificate-box">
                         <h3>Offer Letter</h3>
                         <iframe src="https://drive.google.com/file/d/1IqCGNvIZv4TwqdP6NYAcenwTI7jiiXe7/preview" frameborder="0"></iframe>
-                        <a href="https://drive.google.com/file/d/1IqCGNvIZv4TwqdP6NYAcenwTI7jiiXe7" class="btn">View Offer Letter</a>
+                        <a href="https://drive.google.com/file/d/1IqCGNvIZv4TwqdP6NYAcenwTI7jiiXe7" ></a>
                     </div>
                 </div>
             </div>
@@ -627,10 +632,10 @@
                         <li>Implemented advanced prompt engineering techniques</li>
                         <li>Fine-tuned domain-specific LLMs in Watson Studio</li>
                     </ul>
-                    
+
                     <h3>Technologies Used</h3>
                     <p>ChatGPT, DALLE, Claude AI, IBM Watson Studio, Prompt Engineering</p>
-                    
+
                     <h3>Achievements</h3>
                     <ul>
                         <li>Boosted content generation speed by 48%</li>
@@ -638,12 +643,17 @@
                         <li>Reduced iteration time for content generation</li>
                     </ul>
                 </div>
-                
+
                 <div class="certificate-container">
                     <div class="certificate-box">
                         <h3>Certificate</h3>
-                        <iframe src="https://drive.google.com/file/d/1GeQcS9H4UwSE2G6HgEArg7fETeQwUEtq/preview" frameborder="0"></iframe>
-                        <a href="https://drive.google.com/file/d/1GeQcS9H4UwSE2G6HgEArg7fETeQwUEtq" class="btn">View Certificate</a>
+                        <iframe src="https://drive.google.com/file/d/YOUR_CERTIFICATE_ID_2/preview" frameborder="0"></iframe>
+                        <a href="https://drive.google.com/file/d/YOUR_CERTIFICATE_ID_2/view" ></a>
+                    </div>
+                    <div class="certificate-box">
+                        <h3>Offer Letter</h3>
+                        <iframe src="https://drive.google.com/file/d/YOUR_OFFER_LETTER_ID_2/preview" frameborder="0"></iframe>
+                        <a href="https://drive.google.com/file/d/YOUR_OFFER_LETTER_ID_2/view" ></a>
                     </div>
                 </div>
             </div>
@@ -668,10 +678,10 @@
                         <li>Managed the complete analytics pipeline from data cleaning to visualization</li>
                         <li>Developed ML models using Python, Pandas, NumPy, Plotly, and scikit-learn</li>
                     </ul>
-                    
+
                     <h3>Technologies Used</h3>
                     <p>Python, Pandas, NumPy, Plotly, scikit-learn, SQL</p>
-                    
+
                     <h3>Achievements</h3>
                     <ul>
                         <li>Improved operational efficiency by 20%</li>
@@ -679,17 +689,17 @@
                         <li>Delivered actionable insights to stakeholders</li>
                     </ul>
                 </div>
-                
+
                 <div class="certificate-container">
                     <div class="certificate-box">
                         <h3>Certificate</h3>
-                        <iframe src="https://drive.google.com/file/d/1be5HCQlPX-FI5GClFgX2D-VLiEsdthc6/preview" frameborder="0"></iframe>
-                        <a href="https://drive.google.com/file/d/1be5HCQlPX-FI5GClFgX2D-VLiEsdthc6" class="btn">View Certificate</a>
+                        <iframe src="https://drive.google.com/file/d/YOUR_CERTIFICATE_ID_3/preview" frameborder="0"></iframe>
+                        <a href="https://drive.google.com/file/d/YOUR_CERTIFICATE_ID_3/view" ></a>
                     </div>
                     <div class="certificate-box">
                         <h3>Offer Letter</h3>
-                        <iframe src="https://drive.google.com/file/d/1eGGE-0CJy88Zyd7OIZpma0ABLopVXU3M/preview" frameborder="0"></iframe>
-                        <a href="https://drive.google.com/file/d/1eGGE-0CJy88Zyd7OIZpma0ABLopVXU3M" class="btn">View Offer Letter</a>
+                        <iframe src="https://drive.google.com/file/d/YOUR_OFFER_LETTER_ID_3/preview" frameborder="0"></iframe>
+                        <a href="https://drive.google.com/file/d/YOUR_OFFER_LETTER_ID_3/view" ></a>
                     </div>
                 </div>
             </div>
@@ -714,10 +724,10 @@
                         <li>Email automation</li>
                         <li>Database backend integration</li>
                     </ul>
-                    
+
                     <h3>Project</h3>
                     <p>Developed a College Management System using Python and MySQL under the guidance of IIT Bombay experts</p>
-                    
+
                     <h3>Skills Gained</h3>
                     <ul>
                         <li>Advanced Python programming</li>
@@ -725,17 +735,17 @@
                         <li>System design and development</li>
                     </ul>
                 </div>
-                
+
                 <div class="certificate-container">
                     <div class="certificate-box">
                         <h3>Certificate</h3>
-                        <iframe src="https://drive.google.com/file/d/1HdHv_P2uzbSmXYUipik_VhuKdWcuzvTN/preview" frameborder="0"></iframe>
-                        <a href="hhttps://drive.google.com/file/d/1HdHv_P2uzbSmXYUipik_VhuKdWcuzvTN" class="btn">View Certificate</a>
+                        <iframe src="https://drive.google.com/file/d/YOUR_CERTIFICATE_ID_4/preview" frameborder="0"></iframe>
+                        <a href="https://drive.google.com/file/d/YOUR_CERTIFICATE_ID_4/view" ></a>
                     </div>
                     <div class="certificate-box">
                         <h3>Completion Proof</h3>
-                        <iframe src="https://drive.google.com/file/d/1t0zHWEefvoVyD-7TRvneQ-jIGjuBzpIp/preview" frameborder="0"></iframe>
-                        <a href="https://drive.google.com/file/d/1t0zHWEefvoVyD-7TRvneQ-jIGjuBzpIp" class="btn">View Offer Letter</a>
+                        <iframe src="https://drive.google.com/file/d/YOUR_COMPLETION_PROOF_ID_4/preview" frameborder="0"></iframe>
+                        <a href="https://drive.google.com/file/d/YOUR_COMPLETION_PROOF_ID_4/view" ></a>
                     </div>
                 </div>
             </div>
@@ -754,7 +764,7 @@
             <div class="modal-body">
                 <h3>Project Description</h3>
                 <p>Developed a production-ready ML application that captures camera input, classifies facial expressions in real time with 89% initial accuracy, and employs a self-learning neural network that retrains on newly collected data to continuously improve prediction performance.</p>
-                
+
                 <h3>Key Features</h3>
                 <ul>
                     <li>Real-time facial expression classification</li>
@@ -763,15 +773,15 @@
                     <li>Emoji-based UI for intuitive user feedback</li>
                     <li>Initial accuracy of 89% with continuous improvement</li>
                 </ul>
-                
+
                 <h3>Technologies Used</h3>
                 <p>Python, OpenCV, TensorFlow/Keras, Streamlit, NumPy, Pandas</p>
-                
+
                 <h3>Project Demo</h3>
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
                 </div>
-                
+
                 <div class="modal-footer">
                     <a href="https://github.com/YUVRAJKG365" class="btn" target="_blank">View on GitHub</a>
                 </div>
@@ -789,7 +799,7 @@
             <div class="modal-body">
                 <h3>Project Description</h3>
                 <p>Built an interactive dashboard that automates data ingestion, cleansing, and feature engineering. Integrated LLM-powered document intelligence to extract text and images from various document formats (including scanned files), executed predictive models, and visualized results with dynamic charts and animated UI components.</p>
-                
+
                 <h3>Key Features</h3>
                 <ul>
                     <li>Automated data ingestion and cleansing</li>
@@ -798,15 +808,15 @@
                     <li>Dynamic visualization with interactive charts</li>
                     <li>Full SQL query execution support on live datasets</li>
                 </ul>
-                
+
                 <h3>Technologies Used</h3>
                 <p>Python, Streamlit, Pandas, NumPy, scikit-learn, Plotly, Gemini API, NLTK/spacy</p>
-                
+
                 <h3>Project Demo</h3>
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
                 </div>
-                
+
                 <div class="modal-footer">
                     <a href="https://github.com/YUVRAJKG365" class="btn" target="_blank">View on GitHub</a>
                 </div>
@@ -824,7 +834,7 @@
             <div class="modal-body">
                 <h3>Project Description</h3>
                 <p>Engineered a full-stack solution for bed allocation, inventory tracking, ambulance dispatch, appointment scheduling, discharge processing, and attendance marking. Features AI-driven chatbots for patient inquiries and real-time analytics dashboards to monitor key performance indicators and designed a fully automated system achieving 85–90% workflow automation across all modules.</p>
-                
+
                 <h3>Key Features</h3>
                 <ul>
                     <li>Comprehensive hospital management modules</li>
@@ -833,15 +843,15 @@
                     <li>85-90% workflow automation</li>
                     <li>Full-stack solution with database integration</li>
                 </ul>
-                
+
                 <h3>Technologies Used</h3>
                 <p>Python, Streamlit, MySQL, APIs, OpenAI API (chatbot), Plotly, Pandas</p>
-                
+
                 <h3>Project Demo</h3>
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
                 </div>
-                
+
                 <div class="modal-footer">
                     <a href="https://github.com/YUVRAJKG365" class="btn" target="_blank">View on GitHub</a>
                 </div>
@@ -859,7 +869,7 @@
             <div class="modal-body">
                 <h3>Project Description</h3>
                 <p>Led a team in analyzing energy consumption and resource-use datasets to identify inefficiencies and propose actionable sustainability strategies. Delivered forecasting models and visual reports that shortened stakeholder decision cycles by 20%.</p>
-                
+
                 <h3>Key Features</h3>
                 <ul>
                     <li>Analysis of energy consumption and resource-use data</li>
@@ -868,15 +878,15 @@
                     <li>Forecasting models</li>
                     <li>Visual reports for stakeholders</li>
                 </ul>
-                
+
                 <h3>Technologies Used</h3>
                 <p>Python, Jupyter Notebook, Pandas, NumPy, Matplotlib, scikit-learn, SQL/MySQL</p>
-                
+
                 <h3>Project Demo</h3>
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
                 </div>
-                
+
                 <div class="modal-footer">
                     <a href="https://github.com/YUVRAJKG365" class="btn" target="_blank">View on GitHub</a>
                 </div>
@@ -894,7 +904,7 @@
             <div class="modal-body">
                 <h3>Project Description</h3>
                 <p>Designed and built a scale RC aircraft using authentic aeronautical construction methods (airfoil shaping, rib fabrication). Integrated Arduino-based control for throttle, rudder, ailerons, and elevator, achieving stable, controllable flight.</p>
-                
+
                 <h3>Key Features</h3>
                 <ul>
                     <li>Authentic aeronautical construction methods</li>
@@ -903,10 +913,10 @@
                     <li>Servo-driven control surfaces</li>
                     <li>Stable, controllable flight performance</li>
                 </ul>
-                
+
                 <h3>Technologies Used</h3>
                 <p>Arduino, RF Transmitter/Receiver, Servo Motors, 3D-printed airframe components</p>
-                
+
                 <h3>Project Demo</h3>
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
@@ -920,27 +930,33 @@
     <div class="modal-content">
         <span class="close-modal">&times;</span>
         <div class="modal-header">
-            <h2>Generative AI Skills for Creative Content</h2>
-            <p>LinkedIn Learning | Issued: May 2024</p>
+            <h2>Oracle Cloud Infrastructure 2025 Certified Generative AI Professional</h2>
+            <p>Oracle University | Issued: August 2025</p>
         </div>
         <div class="modal-body">
             <h3>Description</h3>
-            <p>This certification demonstrates expertise in generative AI applications for creative content, covering opportunities, ethical considerations, and practical implementations.</p>
-            
+            <p>
+            Earned through Oracle University, this certification validates expertise in LLMs, OCI Generative AI, RAG, Semantic Search, Vector Databases, and chatbot deployment with LangChain.
+            </p>
+
             <h3>Skills Acquired</h3>
             <ul>
-                <li>Ethical considerations in generative AI</li>
-                <li>Creative content generation techniques</li>
-                <li>Opportunity assessment for AI in creative fields</li>
-                <li>Best practices for responsible AI use</li>
+                <li>Large Language Models (LLMs) & Prompt Engineering</li>
+                <li>OCI Generative AI Service (Pretrained Models, Fine-tuning, AI Clusters)</li>
+                <li>Retrieval-Augmented Generation (RAG) with Semantic Search & Vector Databases</li>
+                <li>LangChain for chatbot development and deployment</li>
             </ul>
-            
             <div class="modal-footer">
-                <a href="https://drive.google.com/file/d/1jkB4vVVPVV9dXsDSQFSR6ROHgljcrV7l" target="_blank" class="btn">View Certificate</a>
+                <a href="https://drive.google.com/file/d/1G5zYayfa6mFBWx30_jiZ3uS1tcXmwsxk" 
+                   target="_blank" 
+                   class="btn">
+                   View Certificate
+                </a>
             </div>
         </div>
     </div>
 </div>
+
 
 <div class="modal" id="modal11">
     <div class="modal-content">
@@ -952,7 +968,7 @@
         <div class="modal-body">
             <h3>Description</h3>
             <p>Comprehensive certification covering core AI concepts, machine learning fundamentals, and practical applications in business contexts.</p>
-            
+
             <h3>Skills Acquired</h3>
             <ul>
                 <li>AI and machine learning fundamentals</li>
@@ -960,7 +976,7 @@
                 <li>IBM Watson Studio implementation</li>
                 <li>AI solution design principles</li>
             </ul>
-            
+
             <div class="modal-footer">
                 <a href="https://www.credly.com/badges/9bc501f6-031c-4d2d-8fd3-20f18851c134/public_url" target="_blank" class="btn">View Credential</a>
             </div>
@@ -978,7 +994,7 @@
         <div class="modal-body">
             <h3>Description</h3>
             <p>Advanced certification program covering the intersection of artificial intelligence, machine learning, and data science with practical implementations.</p>
-            
+
             <h3>Skills Acquired</h3>
             <ul>
                 <li>Machine learning algorithms</li>
@@ -986,7 +1002,7 @@
                 <li>AI model deployment</li>
                 <li>Real-world case studies</li>
             </ul>
-            
+
             <div class="modal-footer">
                 <a href="https://drive.google.com/file/d/1iDmOSEd6GU2JlgIETvZKP3IcXiK0FJI8" target="_blank" class="btn">View Certificate</a>
             </div>
@@ -1004,7 +1020,7 @@
         <div class="modal-body">
             <h3>Description</h3>
             <p>In-depth certification covering fundamental and advanced concepts in computer architecture and organization.</p>
-            
+
             <h3>Skills Acquired</h3>
             <ul>
                 <li>Processor design and architecture</li>
@@ -1012,7 +1028,7 @@
                 <li>Parallel computing concepts</li>
                 <li>Performance optimization techniques</li>
             </ul>
-            
+
             <div class="modal-footer">
                 <a href="https://drive.google.com/file/d/1EQyqhFVcfMZseL_KVHhJRoGU4RL25N8J" target="_blank" class="btn">View Certificate</a>
             </div>
@@ -1030,7 +1046,7 @@
         <div class="modal-body">
             <h3>Description</h3>
             <p>Practical certification demonstrating how to leverage generative AI tools to enhance productivity across various business functions.</p>
-            
+
             <h3>Skills Acquired</h3>
             <ul>
                 <li>Productivity enhancement with AI</li>
@@ -1038,7 +1054,7 @@
                 <li>Workflow automation techniques</li>
                 <li>Prompt engineering best practices</li>
             </ul>
-            
+
             <div class="modal-footer">
                 <a href="https://drive.google.com/file/d/1dSv7kjHBQ9J-6lOWw41soTLHGIq6MpKw" target="_blank" class="btn">View Certificate</a>
             </div>
@@ -1056,7 +1072,7 @@
         <div class="modal-body">
             <h3>Description</h3>
             <p>Practical job simulation certification demonstrating the application of generative AI in data analytics workflows within enterprise environments.</p>
-            
+
             <h3>Skills Acquired</h3>
             <ul>
                 <li>GenAI for data analysis</li>
@@ -1064,7 +1080,7 @@
                 <li>Data visualization with AI</li>
                 <li>Business insights generation</li>
             </ul>
-            
+
             <div class="modal-footer">
                 <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/ifobHAoMjQs9s6bKS/gMTdCXwDdLYoXZ3wG_ifobHAoMjQs9s6bKS_YGNWakEF7jG7S9LQ9_1751883291747_completion_certificate.pdf" target="_blank" class="btn">View Certificate</a>
             </div>
@@ -1073,6 +1089,6 @@
 </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="assests/js/script.js"></script>
+    <script src="assests\js\script.js"></script>
 </body>
 </html>
