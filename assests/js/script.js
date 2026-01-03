@@ -3,31 +3,26 @@ const initSwiper = () => {
         slidesPerView: 1,
         spaceBetween: 20,
         centeredSlides: false,
-        loop: false,
+        loop: true,
         grabCursor: true,
+        speed: 6000,
+        freeMode: true,
+        freeModeMomentum: false,
+        autoplay: {
+            delay: 0,
+            disableOnInteraction: false,
+        },
         pagination: {
             el: '.swiper-pagination',
             clickable: true,
             dynamicBullets: true,
         },
         breakpoints: {
-            576: {
-                slidesPerView: 1,
-                spaceBetween: 20
-            },
-            768: {
-                slidesPerView: 2,
-                spaceBetween: 25
-            },
-            992: {
-                slidesPerView: 3,
-                spaceBetween: 30
-            }
+            576: { slidesPerView: 1, spaceBetween: 20 },
+            768: { slidesPerView: 2, spaceBetween: 25 },
+            992: { slidesPerView: 3, spaceBetween: 30 }
         },
-        // Enable iOS edge swipe detection
-        edgeSwipeDetection: true,
-        edgeSwipeThreshold: 20,
-        // Better touch support
+        // touch + interaction options
         touchStartPreventDefault: false,
         touchRatio: 0.5,
         simulateTouch: true,
@@ -39,14 +34,6 @@ const initSwiper = () => {
         preventInteractionOnTransition: true,
         on: {
             init: function() {
-                // Make ALL slides visible on init
-                this.slides.forEach(slide => {
-                    slide.style.opacity = 1;
-                    slide.style.transform = 'translateY(0)';
-                });
-            },
-            slideChange: function() {
-                // Keep ALL slides visible during navigation
                 this.slides.forEach(slide => {
                     slide.style.opacity = 1;
                     slide.style.transform = 'translateY(0)';
@@ -55,23 +42,54 @@ const initSwiper = () => {
         }
     });
 
-    // Force Swiper to update on resize
-    window.addEventListener('resize', () => {
-        swiper.update();
-    });
+    // expose for external control
+    window.certSwiper = swiper;
 
-    // Click event for certification cards
+    // update on resize
+    window.addEventListener('resize', () => { try { swiper.update(); } catch(e){} });
+
+    // Stop/resume autoplay on pointer/touch; open modal only on click
     document.querySelectorAll('.certification-card').forEach(card => {
-        card.addEventListener('click', function() {
+        card.addEventListener('pointerenter', () => { try { swiper.autoplay.stop(); } catch(e){} });
+        card.addEventListener('pointerleave', () => {
+            setTimeout(() => { if (!document.querySelector('.modal[style*="display: block"]')) { try { swiper.autoplay.start(); } catch(e){} } }, 80);
+        });
+
+        card.addEventListener('touchstart', () => { try { swiper.autoplay.stop(); } catch(e){} }, { passive:true });
+        card.addEventListener('touchend', () => {
+            setTimeout(() => { if (!document.querySelector('.modal[style*="display: block"]')) { try { swiper.autoplay.start(); } catch(e){} } }, 220);
+        }, { passive:true });
+
+        card.addEventListener('click', function(e) {
+            e.stopPropagation();
             const modalId = this.getAttribute('data-modal');
             if (modalId) {
                 const modal = document.getElementById(modalId);
                 if (modal) {
                     modal.style.display = 'block';
                     document.body.style.overflow = 'hidden';
+                    try { swiper.autoplay.stop(); } catch(e){}
                 }
             }
         });
+    });
+
+    // resume autoplay when any modal is closed
+    document.querySelectorAll('.close-modal').forEach(btn => {
+        btn.addEventListener('click', function() {
+            this.closest('.modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            setTimeout(() => { try { if (window.certSwiper) window.certSwiper.autoplay.start(); } catch(e){} }, 80);
+        });
+    });
+
+    // also resume when clicking outside modal
+    window.addEventListener('click', (e) => {
+        if (e.target.classList.contains('modal')) {
+            e.target.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            setTimeout(() => { try { if (window.certSwiper) window.certSwiper.autoplay.start(); } catch(e){} }, 80);
+        }
     });
 };
 
