@@ -554,6 +554,7 @@ nav {
                         <h3>AI & Machine Learning Intern</h3>
                         <span class="experience-date">Jan - Feb 2025</span>
                         <p>Developed a real-time Facial Emotion Recognition System featuring a self-learning model that continuously adapts by ingesting new user data in production...</p>
+                        <p>Tap on card to view more..</p>
                         <p class="view-more">View Details</p>
                     </div>
                 </div>
@@ -567,6 +568,7 @@ nav {
                         <h3>Prompt Engineering Intern</h3>
                         <span class="experience-date">Dec - Jan 2025</span>
                         <p>Optimized generative AI workflows using ChatGPT, DALLE, Claude AI, and IBM Watson Studio through advanced prompt engineering...</p>
+                        <p>Tap on card to view more..</p>
                         <p class="view-more">View Details</p>
                     </div>
                 </div>
@@ -580,6 +582,7 @@ nav {
                         <h3>Data Analytics Intern, Team Lead</h3>
                         <span class="experience-date">June - Aug 2024</span>
                         <p>Led a 5-member team to analyze real-world sustainability datasets, identifying inefficiencies and recommending data-driven strategies...</p>
+                        <p>Tap on card to view more..</p>
                         <p class="view-more">View Details</p>
                     </div>
                 </div>
@@ -593,6 +596,7 @@ nav {
                         <h3>Advanced Python Programming</h3>
                         <span class="experience-date">June - July 2024</span>
                         <p>Learned advanced Python programming & techniques—including GUI development, email automation, and database backend integration...</p>
+                        <p>Tap on card to view more..</p>
                         <p class="view-more">View Details</p>
                     </div>
                 </div>
@@ -606,6 +610,7 @@ nav {
                         <h4>Oasis Infobyte</h4>
                         <span class="experience-date">Sep - Oct 2025</span>
                         <p>Built and deployed end-to-end Machine Learning and NLP solutions, developed KPI-driven BI dashboards, and delivered production-ready Streamlit applications on real-world datasets — recognized as a <strong>Star Performer</strong> for exceptional project execution.</p>
+                        <p>Tap on card to view more..</p>
                         <p class="view-more">View Details</p>
                     </div>
                 </div>
@@ -950,6 +955,15 @@ document.addEventListener('DOMContentLoaded', function() {
     cards.forEach(card => {
         card.style.opacity = '1';
         card.style.transform = 'translateY(0)';
+    });
+});
+
+// Highlight 'Tap on card...' hint
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('p').forEach(p => {
+        if (p.textContent && p.textContent.trim() === 'Tap on card to view more..') {
+            p.classList.add('tap-to-view');
+        }
     });
 });
     </script>
