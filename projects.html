@@ -533,6 +533,7 @@ nav {
                             <span class="tech-tag">Streamlit</span>
                         </div>
                         <p>A production-ready ML application that captures camera input, classifies facial expressions in real time with 89% initial accuracy...</p>
+                        <p>Tap on card to view more..</p>
                         <p class="view-more">View Details</p>
                     </div>
                 </div>
@@ -551,6 +552,7 @@ nav {
                             <span class="tech-tag">NLP</span>
                         </div>
                         <p>An interactive dashboard that automates data ingestion, cleansing, and feature engineering with LLM-powered document intelligence...</p>
+                        <p>Tap on card to view more..</p>
                         <p class="view-more">View Details</p>
                     </div>
                 </div>
@@ -569,6 +571,7 @@ nav {
                             <span class="tech-tag">OpenAI API</span>
                         </div>
                         <p>A full-stack solution for bed allocation, inventory tracking, ambulance dispatch, appointment scheduling with AI-driven chatbots...</p>
+                        <p>Tap on card to view more..</p>
                         <p class="view-more">View Details</p>
                     </div>
                 </div>
@@ -586,6 +589,7 @@ nav {
                             <span class="tech-tag">Machine Learning</span>
                         </div>
                         <p>Developed a heart disease prediction and detection system using machine learning algorithms.....</p>
+                        <p>Tap on card to view more..</p>
                         <p class="view-more">View Details</p>
                     </div>
                 </div>
@@ -604,6 +608,7 @@ nav {
                             <span class="tech-tag">Numpy Pandas</span>
                         </div>
                         <p>Developed a system to predict delinquency based on historical data, providing insights into potential risks and enabling proactive measures....</p>
+                        <p>Tap on card to view more..</p>
                         <p class="view-more">View Details</p>
                     </div>
                 </div>
@@ -622,6 +627,7 @@ nav {
                             <span class="tech-tag">Machine Learning</span>
                         </div>
                         <p>A web application to predict stock prices using historical data of sales & productions and machine learning algorithms...</p>
+                        <p>Tap on card to view more..</p>
                         <p class="view-more">View Details</p>
                     </div>
                 </div>
@@ -640,6 +646,7 @@ nav {
             <span class="tech-tag">GenAI</span>
         </div>
         <p>Fully offline, privacy-first intelligent assistant with adaptive reasoning, persistent memory, and real-time voice + text interaction.</p>
+        <p>Tap on card to view more..</p>
         <p class="view-more">View Details</p>
     </div>
 </div>
@@ -1106,6 +1113,15 @@ document.addEventListener('DOMContentLoaded', function() {
     cards.forEach(card => {
         card.style.opacity = '1';
         card.style.transform = 'translateY(0)';
+    });
+});
+
+// Highlight 'Tap on card...' hint
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('p').forEach(p => {
+        if (p.textContent && p.textContent.trim() === 'Tap on card to view more..') {
+            p.classList.add('tap-to-view');
+        }
     });
 });
     </script>
