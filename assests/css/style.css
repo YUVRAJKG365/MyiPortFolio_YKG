@@ -467,10 +467,30 @@ nav {
 #technical-skills .tags .tag:nth-child(5n+4) { background: linear-gradient(90deg,#ff8e6b,#ffb86b); color:#1b1b2f; }
 #technical-skills .tags .tag:nth-child(5n+5) { background: linear-gradient(90deg,#c88bff,#a97bff); }
 
-/* On small screens, allow tags to scroll horizontally instead of forcing wide layout */
-@media (max-width: 900px) {
-    #technical-skills .tech-card-title { flex: 0 0 140px; }
-    #technical-skills .tags { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+/* For tablets and smaller (<=1024px): stack card content vertically and allow tags to wrap into multiple rows so the card height grows instead of widening */
+@media (max-width: 1024px) {
+    #technical-skills .tech-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    #technical-skills .tech-card-title {
+        flex: 0 0 auto;
+        width: 100%;
+        margin-bottom: 8px;
+        font-size: 0.98rem;
+    }
+
+    /* Allow tags to wrap to new lines and expand card height (no horizontal scroll) */
+    #technical-skills .tags {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        overflow-x: visible;
+        max-width: 100%;
+        gap: 8px;
+    }
 }
 
 /* On very small screens stack title above tags for best fit */
