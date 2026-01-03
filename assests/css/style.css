@@ -398,6 +398,88 @@ nav {
     gap: 50px;
 }
 
+/* Technical Skills: stacked horizontal bars that adapt to viewport width */
+#technical-skills .tech-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    max-width: 100%;
+}
+
+/* Card layout: left title, right flexible tag area. Allow wrapping when space is tight. */
+#technical-skills .tech-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255,255,255,0.04);
+    padding: 12px 16px;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(16,16,32,0.6);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    min-width: 0;
+    flex-wrap: wrap;
+}
+
+#technical-skills .tech-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(16,16,32,0.65);
+}
+
+/* Title: fixed basis but allowed to shrink on small screens */
+#technical-skills .tech-card-title {
+    flex: 0 0 200px;
+    min-width: 0;
+    margin: 0;
+    color: #e4be00;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* Tag area: flexible and will wrap to multiple rows when necessary; on small screens it becomes horizontally scrollable */
+#technical-skills .tags {
+    display: flex;
+    gap: 10px;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    overflow: hidden;
+    min-width: 0;
+}
+
+#technical-skills .tag {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 999px;
+    color: #fff;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    flex: 0 0 auto;
+    box-shadow: 0 6px 14px rgba(16,16,32,0.45);
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Rotating color palette for tags (cycles every 5 tags) */
+#technical-skills .tags .tag:nth-child(5n+1) { background: linear-gradient(90deg,#ff6b6b,#ff8e72); }
+#technical-skills .tags .tag:nth-child(5n+2) { background: linear-gradient(90deg,#6bc9ff,#72a4ff); }
+#technical-skills .tags .tag:nth-child(5n+3) { background: linear-gradient(90deg,#ed3625,#4428e3); }
+#technical-skills .tags .tag:nth-child(5n+4) { background: linear-gradient(90deg,#ff8e6b,#ffb86b); color:#1b1b2f; }
+#technical-skills .tags .tag:nth-child(5n+5) { background: linear-gradient(90deg,#c88bff,#a97bff); }
+
+/* On small screens, allow tags to scroll horizontally instead of forcing wide layout */
+@media (max-width: 900px) {
+    #technical-skills .tech-card-title { flex: 0 0 140px; }
+    #technical-skills .tags { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+}
+
+/* On very small screens stack title above tags for best fit */
+@media (max-width: 480px) {
+    #technical-skills .tech-card { flex-direction: column; align-items: stretch; }
+    #technical-skills .tech-card-title { width: 100%; flex: 0 0 auto; margin-bottom: 8px; }
+    #technical-skills .tags { width: 100%; }
+}
+
 .about-img {
     flex: 1;
     border-radius: 20px;
@@ -444,6 +526,12 @@ nav {
     line-height: 1.6;
     margin-bottom: 20px;
     color: var(--text-color);
+}
+
+/* Small spacing between About section list items */
+.about-points li {
+    margin-bottom: 0.45rem;
+    line-height: 1.45;
 }
 
 .about-skills {
@@ -1471,6 +1559,35 @@ transform: translateY(0);
     border: none;
 }
 
+/* Resume preview (Google Drive iframe) */
+.resume-preview-container {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    max-height: 900px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background: #000;
+}
+
+.resume-preview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Make swiper slides and wrappers allow overflow so hovered cards aren't clipped */
+.certifications-slider,
+.swiper,
+.swiper-wrapper,
+.swiper-slide {
+    overflow: visible !important;
+}
+
 /* Scroll Indicator */
 .scroll-indicator {
     position: fixed;
@@ -1511,6 +1628,9 @@ transform: translateY(0);
     padding: 15px;
     backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
 }
 
 .certificate-box h3 {
@@ -1521,7 +1641,9 @@ transform: translateY(0);
 
 .certificate-box iframe {
     width: 100%;
-    height: 300px;
+    /* let iframe flex inside the box so the button stays below it */
+    flex: 1 1 auto;
+    min-height: 220px;
     border-radius: 8px;
     border: none;
     margin-bottom: 15px;
@@ -1534,6 +1656,8 @@ transform: translateY(0);
     text-align: center;
     padding: 8px;
     font-size: 0.9rem;
+    /* push button to the bottom of the certificate box */
+    margin-top: auto;
 }
 
 /* Text Morphing Animation */
