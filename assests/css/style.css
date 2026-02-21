@@ -2200,6 +2200,7 @@ outline: 2px solid currentColor !important;
     transform: translateY(-2px);
 }
 
+
 /* Touch Device Adjustments */
 @media (hover: none) {
     .skill-card,
@@ -2221,5 +2222,93 @@ outline: 2px solid currentColor !important;
     .contact-form:active {
         transform: scale(0.98);
         opacity: 0.95;
+    }
+}
+/* Stats Section - Modern Clean UI */
+.stats-section {
+    padding: 100px 0;
+    text-align: center;
+}
+
+.stats-title {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.stats-subtitle {
+    color: #aaa;
+    margin-bottom: 60px;
+    font-size: 1rem;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.stat-box {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Gradient + Glow Numbers */
+.stat-box h2 {
+    font-size: 60px;
+    font-weight: 800;
+
+    background: linear-gradient(90deg, #00f7ff, #00c3ff, #7b2cff);
+
+    -webkit-background-clip: text;
+    background-clip: text; /* ✅ FIX ADDED */
+
+    -webkit-text-fill-color: transparent;
+
+    position: relative;
+    display: inline-block;
+}
+
+/* Glow Effect */
+.stat-box h2::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+
+    background: linear-gradient(90deg, #00f7ff, #00c3ff, #7b2cff);
+
+    -webkit-background-clip: text;
+    background-clip: text; /* ✅ FIX ADDED */
+
+    -webkit-text-fill-color: transparent;
+
+    filter: blur(12px);
+    opacity: 0.7;
+}
+
+.stat-box h4 {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #fff;
+}
+
+.stat-box p {
+    font-size: 14px;
+    color: #aaa;
+    margin-top: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .stats-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stat-box h2 {
+        font-size: 45px;
     }
 }
