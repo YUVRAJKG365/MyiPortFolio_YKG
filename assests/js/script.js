@@ -433,3 +433,48 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(card);
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const counters = document.querySelectorAll('.counter');
+
+    const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    const duration = 1500; // animation time (ms)
+                    let start = null;
+
+                    const animate = (timestamp) => {
+                        if (!start) start = timestamp;
+                        const progress = timestamp - start;
+                        const progressRatio = Math.min(progress / duration, 1);
+
+                        const easedProgress = easeOutCubic(progressRatio);
+                        const value = Math.floor(easedProgress * target);
+
+                        counter.innerText = value;
+                        counter.setAttribute("data-text", value);
+
+                        if (progress < duration) {
+                            requestAnimationFrame(animate);
+                        } else {
+                            counter.innerText = target + "+";
+                            counter.setAttribute("data-text", target + "+");
+                        }
+                    };
+
+                    requestAnimationFrame(animate);
+                });
+
+                observer.disconnect();
+            }
+        });
+    }, { threshold: 0.4 });
+
+    const statsSection = document.querySelector('#stats');
+    if (statsSection) observer.observe(statsSection);
+});
