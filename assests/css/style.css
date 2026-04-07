@@ -6,7 +6,7 @@
     --text-color: #f8f9fa;
     --text-light: #f8f9fa;
     --card-bg: rgba(255, 255, 255, 0.1);
-    --transition: all 0.3s ease;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
@@ -396,108 +396,6 @@ nav {
     display: flex;
     align-items: center;
     gap: 50px;
-}
-
-/* Technical Skills: stacked horizontal bars that adapt to viewport width */
-#technical-skills .tech-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 18px;
-    max-width: 100%;
-}
-
-/* Card layout: left title, right flexible tag area. Allow wrapping when space is tight. */
-#technical-skills .tech-card {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-    border: 1px solid rgba(255,255,255,0.04);
-    padding: 12px 16px;
-    border-radius: 10px;
-    box-shadow: 0 6px 18px rgba(16,16,32,0.6);
-    transition: transform 0.18s ease, box-shadow 0.18s ease;
-    min-width: 0;
-    flex-wrap: wrap;
-}
-
-#technical-skills .tech-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 14px 30px rgba(16,16,32,0.65);
-}
-
-/* Title: fixed basis but allowed to shrink on small screens */
-#technical-skills .tech-card-title {
-    flex: 0 0 200px;
-    min-width: 0;
-    margin: 0;
-    color: #e4be00;
-    font-weight: 600;
-    font-size: 1rem;
-}
-
-/* Tag area: flexible and will wrap to multiple rows when necessary; on small screens it becomes horizontally scrollable */
-#technical-skills .tags {
-    display: flex;
-    gap: 10px;
-    flex: 1 1 auto;
-    flex-wrap: wrap;
-    overflow: hidden;
-    min-width: 0;
-}
-
-#technical-skills .tag {
-    display: inline-block;
-    padding: 8px 12px;
-    border-radius: 999px;
-    color: #fff;
-    font-size: 0.95rem;
-    white-space: nowrap;
-    flex: 0 0 auto;
-    box-shadow: 0 6px 14px rgba(16,16,32,0.45);
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-/* Rotating color palette for tags (cycles every 5 tags) */
-#technical-skills .tags .tag:nth-child(5n+1) { background: linear-gradient(90deg,#ff6b6b,#ff8e72); }
-#technical-skills .tags .tag:nth-child(5n+2) { background: linear-gradient(90deg,#6bc9ff,#72a4ff); }
-#technical-skills .tags .tag:nth-child(5n+3) { background: linear-gradient(90deg,#ed3625,#4428e3); }
-#technical-skills .tags .tag:nth-child(5n+4) { background: linear-gradient(90deg,#ff8e6b,#ffb86b); color:#1b1b2f; }
-#technical-skills .tags .tag:nth-child(5n+5) { background: linear-gradient(90deg,#c88bff,#a97bff); }
-
-/* For tablets and smaller (<=1024px): stack card content vertically and allow tags to wrap into multiple rows so the card height grows instead of widening */
-@media (max-width: 1024px) {
-    #technical-skills .tech-card {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-    }
-
-    #technical-skills .tech-card-title {
-        flex: 0 0 auto;
-        width: 100%;
-        margin-bottom: 8px;
-        font-size: 0.98rem;
-    }
-
-    /* Allow tags to wrap to new lines and expand card height (no horizontal scroll) */
-    #technical-skills .tags {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        overflow-x: visible;
-        max-width: 100%;
-        gap: 8px;
-    }
-}
-
-/* On very small screens stack title above tags for best fit */
-@media (max-width: 480px) {
-    #technical-skills .tech-card { flex-direction: column; align-items: stretch; }
-    #technical-skills .tech-card-title { width: 100%; flex: 0 0 auto; margin-bottom: 8px; }
-    #technical-skills .tags { width: 100%; }
 }
 
 .about-img {
@@ -2059,14 +1957,412 @@ padding: 70px 0;
 flex-direction: column;
 gap: 15px;
     }
-    
+}
+
+/* ============================================
+   TECHNICAL SKILLS WITH ANIMATED LOGOS
+   Dedicated classes for tech stack showcase
+   ============================================ */
+
+.tech-stack-section {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, var(--dark-color) 0%, rgba(26, 26, 46, 0.8) 100%);
+    padding: 80px 0;
+}
+
+.tech-stack-subtitle {
+    text-align: center;
+    color: var(--text-light);
+    opacity: 0.7;
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+    letter-spacing: 0.5px;
+}
+
+/* Unified Tech Stack Container */
+.tech-unified-container {
+    position: relative;
+    width: 100%;
+}
+
+/* Scrollable Wrapper - Handles overflow with iOS 26 Glassmorphism */
+.tech-scrollable-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+    background: rgba(110, 72, 170, 0.06);
+    backdrop-filter: blur(25px);
+    padding: 35px 0;
+    border: 1px solid rgba(157, 80, 187, 0.12);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tech-scrollable-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 100%;
+    background: linear-gradient(90deg, var(--dark-color) 0%, rgba(26, 26, 46, 0.5) 60%, transparent 100%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+.tech-scrollable-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(26, 26, 46, 0.5) 40%, var(--dark-color) 100%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Marquee Container */
+.tech-skills-marquee {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+/* Track - The actual scrolling element */
+.tech-skills-track {
+    display: flex;
+    gap: 25px;
+    padding: 0 40px;
+    width: max-content;   /* 🔥 IMPORTANT */
+    animation: scrollMarqueeFluid 65s linear infinite;
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.tech-skills-track:hover {
+    animation-play-state: paused;
+}
+
+/* Individual Skill Item - iOS 26 Glassmorphism */
+.tech-skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-width: 130px;
+    width: 130px;
+    padding: 24px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    flex-shrink: 0;
+    backface-visibility: hidden;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(18px);
+    box-shadow: 
+        0 4px 30px rgba(255, 255, 255, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.tech-skill-item::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    left: -30%;
+    width: 160%;
+    height: 160%;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.25), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+    z-index: 0;
+    transform: scale(0.8);
+}
+
+.tech-skill-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(157, 80, 187, 0.12), transparent 55%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.tech-skill-item:hover {
+    background: rgba(255, 255, 255, 0.095);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 
+        0 10px 40px rgba(255, 255, 255, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.tech-skill-item:hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.tech-skill-item:hover::after {
+    opacity: 1;
+}
+
+.tech-skill-item:active {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(157, 80, 187, 0.3);
+    box-shadow: 
+        0 8px 40px rgba(157, 80, 187, 0.35),
+        0 0 30px rgba(157, 80, 187, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* Logo Image */
+.tech-logo {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(157, 80, 187, 0.2));
+    transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    z-index: 1;
+}
+
+.tech-skill-item:hover .tech-logo {
+    filter: drop-shadow(0 0 25px rgba(157, 80, 187, 0.7)) drop-shadow(0 0 15px rgba(157, 80, 187, 0.4)) brightness(1.15);
+}
+
+/* Skill Name */
+.tech-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-light);
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    letter-spacing: 0.4px;
+    position: relative;
+    z-index: 1;
+    opacity: 0.85;
+    transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tech-skill-item:hover .tech-name {
+    opacity: 1;
+    color: #f0e7ff;
+    text-shadow: 0 0 15px rgba(157, 80, 187, 0.4);
+}
+
+/* ============================================
+   MARQUEE ANIMATION - Fluid & Smooth
+   Smooth infinite scrolling effect
+   ============================================ */
+
+@keyframes scrollMarqueeFluid {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+
+@keyframes cardGlow {
+    0%, 100% {
+        box-shadow: 
+            0 8px 40px rgba(157, 80, 187, 0.35),
+            0 0 30px rgba(157, 80, 187, 0.25),
+            inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    }
+    50% {
+        box-shadow: 
+            0 12px 50px rgba(157, 80, 187, 0.45),
+            0 0 40px rgba(157, 80, 187, 0.35),
+            inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    }
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        filter: drop-shadow(0 0 8px rgba(157, 80, 187, 0.2));
+    }
+    50% {
+        filter: drop-shadow(0 0 15px rgba(157, 80, 187, 0.35));
+    }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN FOR TECH STACK
+   ============================================ */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+    .tech-stack-section {
+        padding: 60px 0;
+    }
+
+    .tech-category {
+        margin-bottom: 50px;
+    }
+
+    .tech-category-title {
+        font-size: 1.3rem;
+        margin-bottom: 25px;
+    }
+
+    .tech-scrollable-wrapper {
+        padding: 25px 0;
+    }
+
+    .tech-skills-track {
+        gap: 20px;
+        padding: 0 20px;
+        animation-duration: 35s;
+    }
+
+    .tech-skill-item {
+        min-width: 110px;
+        width: 110px;
+        padding: 18px;
+        gap: 10px;
+    }
+
+    .tech-logo {
+        width: 55px;
+        height: 55px;
+    }
+
+    .tech-name {
+        font-size: 0.85rem;
+    }
+}
+
+/* Mobile (480px - 767px) */
+@media (max-width: 767px) {
+    .tech-stack-section {
+        padding: 50px 0;
+    }
+
+    .tech-stack-subtitle {
+        font-size: 1rem;
+        margin-bottom: 35px;
+    }
+
+    .tech-category {
+        margin-bottom: 40px;
+    }
+
+    .tech-category-title {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+    }
+
+    .tech-scrollable-wrapper {
+        padding: 20px 0;
+        border-radius: 10px;
+    }
+
+    .tech-scrollable-wrapper::before,
+    .tech-scrollable-wrapper::after {
+        width: 60px;
+    }
+
+    .tech-skills-track {
+        gap: 15px;
+        padding: 0 15px;
+        animation-duration: 30s;
+    }
+
+    .tech-skill-item {
+        min-width: 90px;
+        width: 90px;
+        padding: 15px;
+        gap: 8px;
+        border-radius: 8px;
+    }
+
+    .tech-logo {
+        width: 45px;
+        height: 45px;
+    }
+
+    .tech-name {
+        font-size: 0.75rem;
+    }
+
+    .tech-skill-item:hover {
+        transform: translateY(-5px);
+    }
+}
+
+/* Small Mobile (below 480px) */
+@media (max-width: 479px) {
+    .tech-stack-section {
+        padding: 40px 0;
+    }
+
+    .tech-stack-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 30px;
+    }
+
+    .tech-category {
+        margin-bottom: 35px;
+    }
+
+    .tech-category-title {
+        font-size: 1rem;
+        margin-bottom: 15px;
+    }
+
+    .tech-scrollable-wrapper {
+        padding: 18px 0;
+    }
+
+    .tech-scrollable-wrapper::before,
+    .tech-scrollable-wrapper::after {
+        width: 50px;
+    }
+
+    .tech-skills-track {
+        gap: 12px;
+        padding: 0 12px;
+        animation-duration: 25s;
+    }
+
+    .tech-skill-item {
+        min-width: 80px;
+        width: 80px;
+        padding: 12px;
+        gap: 6px;
+    }
+
+    .tech-logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .tech-name {
+        font-size: 0.7rem;
+    }
+
     .modal-footer {
-flex-direction: column;
-gap: 10px;
+        flex-direction: column;
+        gap: 10px;
     }
     
     .modal-footer .btn {
-width: 100%;
+        width: 100%;
     }
     .certification-img-container {
         height: 120px;
