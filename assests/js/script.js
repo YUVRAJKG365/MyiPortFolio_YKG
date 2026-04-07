@@ -5,17 +5,19 @@ const initSwiper = () => {
         centeredSlides: false,
         loop: true,
         grabCursor: true,
-        speed: 6000,
-        freeMode: true,
-        freeModeMomentum: false,
+        speed: 600,
         autoplay: {
-            delay: 0,
+            delay: 3000,
             disableOnInteraction: false,
         },
         pagination: {
             el: '.swiper-pagination',
             clickable: true,
             dynamicBullets: true,
+        },
+        navigation: {
+            nextEl: '#swiper-prev',  // Left arrow moves certificates left (next slide)
+            prevEl: '#swiper-next',  // Right arrow moves certificates right (previous slide)
         },
         breakpoints: {
             576: { slidesPerView: 1, spaceBetween: 20 },
