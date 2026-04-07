@@ -1085,6 +1085,66 @@ nav {
     transform: scale(1);
 }
 
+/* Swiper Navigation Arrows */
+#swiper-next,
+#swiper-prev {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: var(--blur-amount);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-bounce);
+    z-index: 100;
+    font-size: 1.2rem;
+    pointer-events: auto;
+    opacity: 0.8;
+}
+
+#swiper-next:hover,
+#swiper-prev:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+    transform: translateY(-50%) scale(1.1);
+    opacity: 1;
+}
+
+#swiper-next {
+    right: -25px;
+}
+
+#swiper-prev {
+    left: -25px;
+}
+
+#swiper-next i,
+#swiper-prev i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+#swiper-next:hover i,
+#swiper-prev:hover i {
+    transform: scale(1.1);
+}
+
+/* Hide arrows on mobile devices */
+@media (max-width: 767px) {
+    #swiper-next,
+    #swiper-prev {
+        display: none;
+    }
+}
+
 /* Contact Section - Liquid Glass */
 .contact-container {
     display: grid;
