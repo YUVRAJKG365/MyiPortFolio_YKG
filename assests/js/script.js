@@ -66,8 +66,7 @@ const initSwiper = () => {
             if (modalId) {
                 const modal = document.getElementById(modalId);
                 if (modal) {
-                    modal.style.display = 'block';
-                    document.body.style.overflow = 'hidden';
+                    openModal(modal);
                     try { swiper.autoplay.stop(); } catch(e){}
                 }
             }
@@ -77,36 +76,73 @@ const initSwiper = () => {
     // resume autoplay when any modal is closed
     document.querySelectorAll('.close-modal').forEach(btn => {
         btn.addEventListener('click', function() {
-            this.closest('.modal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-            setTimeout(() => { try { if (window.certSwiper) window.certSwiper.autoplay.start(); } catch(e){} }, 80);
+            const modal = this.closest('.modal');
+            closeModal(modal);
+            setTimeout(() => { try { if (window.certSwiper) window.certSwiper.autoplay.start(); } catch(e){} }, 320);
         });
     });
 
     // also resume when clicking outside modal
     window.addEventListener('click', (e) => {
         if (e.target.classList.contains('modal')) {
-            e.target.style.display = 'none';
-            document.body.style.overflow = 'auto';
-            setTimeout(() => { try { if (window.certSwiper) window.certSwiper.autoplay.start(); } catch(e){} }, 80);
+            closeModal(e.target);
+            setTimeout(() => { try { if (window.certSwiper) window.certSwiper.autoplay.start(); } catch(e){} }, 320);
         }
     });
 };
+
+function openModal(modal) {
+    if (!modal) return;
+    modal.classList.remove('modal-closing');
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    const content = modal.querySelector('.modal-content');
+    if (content) {
+        content.style.animation = 'modalFadeInLiquid 0.3s cubic-bezier(0.34, 1.2, 0.64, 1) forwards';
+    }
+}
+
+function closeModal(modal) {
+    if (!modal) return;
+    const content = modal.querySelector('.modal-content');
+    modal.classList.add('modal-closing');
+    if (content) {
+        content.style.animation = 'modalFadeOutLiquid 0.3s cubic-bezier(0.34, 1.2, 0.64, 1) forwards';
+        const handler = function() {
+            modal.style.display = 'none';
+            modal.classList.remove('modal-closing');
+            document.body.style.overflow = 'auto';
+            content.style.animation = '';
+            content.removeEventListener('animationend', handler);
+        };
+        content.addEventListener('animationend', handler);
+    } else {
+        modal.style.display = 'none';
+        modal.classList.remove('modal-closing');
+        document.body.style.overflow = 'auto';
+    }
+    setTimeout(() => {
+        if (modal.style.display !== 'none') {
+            modal.style.display = 'none';
+            modal.classList.remove('modal-closing');
+            document.body.style.overflow = 'auto';
+            if (content) content.style.animation = '';
+        }
+    }, 320);
+}
 
 
     // Handle modal close events
     document.querySelectorAll('.close-modal').forEach(btn => {
         btn.addEventListener('click', function() {
-            this.closest('.modal').style.display = 'none';
-            document.body.style.overflow = 'auto';
+            closeModal(this.closest('.modal'));
         });
     });
 
     // Close modal when clicking outside content
     window.addEventListener('click', (e) => {
         if (e.target.classList.contains('modal')) {
-            e.target.style.display = 'none';
-            document.body.style.overflow = 'auto';
+            closeModal(e.target);
         }
     });
 
@@ -171,18 +207,15 @@ const initSwiper = () => {
         const closeResumeModalBtn = document.getElementById('closeResumeModalBtn');
         
         viewResumeBtn.addEventListener('click', () => {
-            resumeModal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
+            openModal(resumeModal);
         });
         
         closeResumeModal.addEventListener('click', () => {
-            resumeModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
+            closeModal(resumeModal);
         });
         
         closeResumeModalBtn.addEventListener('click', () => {
-            resumeModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
+            closeModal(resumeModal);
         });
         
         // Generic modal handling
@@ -190,23 +223,20 @@ const initSwiper = () => {
             element.addEventListener('click', () => {
                 const modalId = element.getAttribute('data-modal');
                 const modal = document.getElementById(modalId);
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden';
+                openModal(modal);
             });
         });
         
         document.querySelectorAll('.close-modal').forEach(closeBtn => {
             closeBtn.addEventListener('click', function() {
-                this.closest('.modal').style.display = 'none';
-                document.body.style.overflow = 'auto';
+                closeModal(this.closest('.modal'));
             });
         });
         
         // Close modal when clicking outside content
         window.addEventListener('click', (e) => {
             if (e.target.classList.contains('modal')) {
-                e.target.style.display = 'none';
-                document.body.style.overflow = 'auto';
+                closeModal(e.target);
             }
         });
         // Enhanced Modal Handling for Certificates
@@ -214,16 +244,14 @@ const initSwiper = () => {
             // Add close button functionality
             document.querySelectorAll('.close-modal').forEach(btn => {
             btn.addEventListener('click', function() {
-                this.closest('.modal').style.display = 'none';
-                document.body.style.overflow = 'auto';
+                closeModal(this.closest('.modal'));
             });
         });
     
         // Close modal when clicking outside
         window.addEventListener('click', function(e) {
             if (e.target.classList.contains('modal')) {
-                e.target.style.display = 'none';
-                document.body.style.overflow = 'auto';
+                closeModal(e.target);
             }
         });
     
