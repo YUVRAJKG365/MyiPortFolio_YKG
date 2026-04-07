@@ -45,6 +45,9 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* iOS Viewport Fix */
@@ -157,7 +160,7 @@ nav {
 
 /* Section Styling - Liquid Flow */
 .section {
-    padding: 100px 0 160px;
+    padding: 140px 0 160px;
     position: relative;
     overflow: hidden;
 }
@@ -645,7 +648,7 @@ nav {
 
 @media (max-width: 576px) {
     .section {
-        padding: 70px 0 120px;
+        padding: 120px 0 120px;
     }
     
     .section-title {
@@ -849,11 +852,13 @@ nav {
                 </div>
             </div>
         </div>
+        </section>
 
-            <!-- Footer -->
-        <div class="container">
-            <h2 class="section-title">Certifications & Licenses</h2>
-            <div class="certifications-grid">
+            <!-- Certifications Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Certifications & Licenses</h2>
+                <div class="certifications-grid">
                 <!-- Certification 1 -->
                 <div class="certification-card" data-modal="modal10">
                     <div class="certification-image">
@@ -1612,10 +1617,11 @@ nav {
                     </div>
                 </div>
             </div>
+        </div>
 
         <!-- Footer -->
 <footer>
-    <div class="container">
+    <div class="footer-content">
         <div class="social-links">
             <a href="https://www.linkedin.com/in/yuvraj-kumar-gond-105a552ba" target="_blank" class="social-link">
                 <i class="fab fa-linkedin-in"></i>
