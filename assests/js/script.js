@@ -507,4 +507,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const statsSection = document.querySelector('#stats');
     if (statsSection) observer.observe(statsSection);
+
+    /* iOS/macOS Scroll Performance Optimization */
+    const isWebKit = /webkit/i.test(navigator.userAgent);
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    
+    if (isWebKit || isMobile) {
+        let isScrolling = false;
+        const skillCards = document.querySelectorAll('.skill-card');
+        
+        // Handle scroll jank by temporarily disabling expensive properties during scroll
+        let scrollTimeout;
+        window.addEventListener('scroll', (e) => {
+            if (!isScrolling) {
+                isScrolling = true;
+                skillCards.forEach(card => {
+                    card.classList.add('scrolling');
+                });
+            }
+            
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                isScrolling = false;
+                skillCards.forEach(card => {
+                    card.classList.remove('scrolling');
+                });
+            }, 150);
+        }, { passive: true });
+
+        // Optimize page load animations
+        window.addEventListener('load', () => {
+            // Force page render after load
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(() => {
+                    document.body.style.willChange = 'auto';
+                });
+            } else {
+                setTimeout(() => {
+                    document.body.style.willChange = 'auto';
+                }, 500);
+            }
+        });
+
+        // Prevent jank during initial page load
+        document.body.style.willChange = 'scroll-position';
+    }
 });
