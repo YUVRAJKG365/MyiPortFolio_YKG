@@ -2610,7 +2610,8 @@ footer {
     .tech-skills-track {
         gap: 12px;
         padding: 0 12px;
-        animation-duration: 25s;
+        animation: scrollMarqueeLiquid 20s linear infinite;
+        width: max-content;
     }
 
     .tech-skill-item {
