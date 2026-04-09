@@ -24,6 +24,13 @@
 
 html {
     scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+    width: 0;
+    height: 0;
 }
 
 body {
@@ -34,6 +41,32 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     position: relative;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+@media (max-width: 768px) {
+    html, body {
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-y: contain;
+    }
+
+    body {
+        touch-action: pan-y;
+    }
+
+    section,
+    .container {
+        scroll-behavior: smooth;
+    }
 }
 
 h1, h2, h3 {
@@ -65,13 +98,13 @@ header {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(26, 26, 46, 0.6);
-    backdrop-filter: var(--blur-amount);
-    -webkit-backdrop-filter: var(--blur-amount);
+    background: rgba(10, 10, 18, 0.75);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     transition: var(--transition);
     padding: 15px 0;
-    border-bottom: 1px solid var(--glass-border);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
 }
 
 nav {
@@ -669,6 +702,9 @@ nav {
     width: 50%;
     box-sizing: border-box;
     opacity: 0;
+    z-index: 1;
+    transform: translateZ(0);
+    will-change: transform, opacity;
 }
 
 .timeline-item.animate-left {
@@ -715,6 +751,10 @@ nav {
     transition: var(--transition-bounce);
     border: 1px solid var(--glass-border);
     cursor: pointer;
+    position: relative;
+    z-index: 1;
+    transform: translateZ(0);
+    will-change: transform, opacity;
 }
 
 .timeline-content:hover {
@@ -722,6 +762,7 @@ nav {
     background: rgba(255, 255, 255, 0.07);
     border-color: var(--glass-border-light);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    z-index: 10;
 }
 
 .timeline-content h3 {
@@ -1518,7 +1559,7 @@ footer {
 /* Modal - Liquid Glass */
 .modal {
     display: flex !important;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     opacity: 0;
     visibility: hidden;
@@ -1531,7 +1572,7 @@ footer {
     background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(12px);
     z-index: 2000;
-    overflow-y: auto;
+    overflow: hidden;
     -webkit-overflow-scrolling: touch;
     transition: opacity 0.3s cubic-bezier(0.34, 1.2, 0.64, 1), visibility 0.3s ease;
 }
@@ -1570,11 +1611,24 @@ footer {
     border-radius: 32px;
     max-width: 800px;
     width: 90%;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
     position: relative;
     animation: modalFadeInLiquid 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
     color: var(--text-color);
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
     border: 1px solid var(--glass-border);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.modal-content::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: transparent;
 }
 
 @keyframes modalFadeInLiquid {
@@ -1995,10 +2049,7 @@ footer {
         display: block;
         padding: 10px 0;
         background: transparent;
-        transition: color 0.15s ease, 
-    }
-    .nav-links a{
-        background: 0.15s ease;
+        transition: color 0.15s ease, background 0.15s ease;
     }
     
     .hamburger {
@@ -2134,6 +2185,135 @@ footer {
     .footer-links {
         flex-direction: column;
         gap: 15px;
+    }
+}
+
+@media (max-width: 767px) {
+    .bg-animation {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: none !important;
+    }
+
+    .hero::before,
+    .bg-animation span,
+    .about-img::before,
+    .project-img::before,
+    .bttn::before,
+    .btn::before,
+    .submit-btn::before,
+    .certification-img-container:hover .certification-overlay,
+    .certification-img-container:hover .certification-overlay i {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .hero {
+        min-height: 420px;
+    }
+
+    .hero-btns,
+    .section-title,
+    .about-img,
+    .about-text,
+    .skill-card,
+    .project-card,
+    .certification-card,
+    .experience-card,
+    .contact-form,
+    .open-to-work-card,
+    .timeline-content,
+    .modal-content {
+        transition: opacity 0.2s ease, transform 0.2s ease !important;
+        will-change: auto !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .btn,
+    .bttn,
+    .submit-btn {
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .btn::before,
+    .bttn::before,
+    .submit-btn::before {
+        display: none !important;
+    }
+
+    .skill-card:hover,
+    .project-card:hover,
+    .certification-card:hover,
+    .experience-card:hover,
+    .timeline-content:hover,
+    .open-to-work-card:hover,
+    .contact-form:hover {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+
+    .btn:hover,
+    .bttn:hover,
+    .submit-btn:hover {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+
+    .nav-links.active li {
+        transition-delay: 0s !important;
+    }
+
+    .nav-links a,
+    .hamburger,
+    .skill-tag,
+    .tech-skill-item,
+    .contact-item,
+    .work-tech-tag {
+        transition: transform 0.2s ease, color 0.15s ease, background 0.15s ease !important;
+    }
+
+    .hero-btns {
+        animation: none !important;
+    }
+
+    .modal {
+        transition: opacity 0.18s ease, visibility 0.18s ease !important;
+    }
+
+    .modal-content {
+        animation-duration: 0.18s !important;
+        transition: opacity 0.18s ease, transform 0.18s ease !important;
+    }
+
+    .modal.modal-closing .modal-content {
+        animation-duration: 0.18s !important;
+    }
+
+    .close-modal:hover {
+        transform: none !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bg-animation,
+    .hero::before,
+    .bg-animation span,
+    .about-img::before,
+    .project-img::before,
+    .tech-skills-track,
+    .bttn::before,
+    .btn::before,
+    .submit-btn::before,
+    .modal-content,
+    .certification-img-container:hover .certification-overlay,
+    .certification-img-container:hover .certification-overlay i,
+    .hero-btns {
+        animation: none !important;
+        transition: none !important;
     }
 }
 
@@ -2332,7 +2512,13 @@ footer {
     }
 
     .tech-scrollable-wrapper {
-        padding: 25px 0;
+        padding: 25px 0 45px;
+        overflow-x: hidden;
+        overflow-y: visible;
+    }
+
+    .tech-skills-marquee {
+        overflow: visible;
     }
 
     .tech-skills-track {
