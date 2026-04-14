@@ -28,8 +28,6 @@
     --glass-border-light: rgba(255, 255, 255, 0.2);
     --blur-amount: blur(20px);
     --blur-amount-light: blur(12px);
-    --gradient-start: #ff006e;
-    --gradient-end: #8338ec;
 }
 
 * {
@@ -598,8 +596,8 @@ nav {
         align-items: flex-start;
         justify-content: center;
         gap: 30px;
-        transition: left 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        z-index: 1100;
+        transition: var(--transition);
+        z-index: 1000;
         padding: 80px 30px;
         box-shadow: 5px 0 25px rgba(0, 0, 0, 0.3);
         border-right: 1px solid var(--glass-border);
@@ -607,49 +605,22 @@ nav {
     
     .nav-links.active {
         left: 0;
-        z-index: 1100;
     }
     
     .nav-links li {
         margin-left: 0;
         width: 100%;
-        opacity: 0;
-        transform: translateX(-20px);
-        transition: opacity 0.2s ease, transform 0.2s ease;
     }
-    
-    .nav-links.active li {
-        opacity: 1;
-        transform: translateX(0);
-    }
-    
-    /* Staggered animation for menu items - faster */
-    .nav-links.active li:nth-child(1) { transition-delay: 0.02s; }
-    .nav-links.active li:nth-child(2) { transition-delay: 0.04s; }
-    .nav-links.active li:nth-child(3) { transition-delay: 0.06s; }
-    .nav-links.active li:nth-child(4) { transition-delay: 0.08s; }
-    .nav-links.active li:nth-child(5) { transition-delay: 0.10s; }
-    .nav-links.active li:nth-child(6) { transition-delay: 0.12s; }
-    .nav-links.active li:nth-child(7) { transition-delay: 0.14s; }
     
     .nav-links a {
         font-size: 1.2rem;
         display: block;
         padding: 10px 0;
         background: transparent;
-        transition: color 0.15s ease, 
-    }
-    .nav-links a{
-        background: 0.15s ease;
     }
     
     .hamburger {
         display: block;
-        transition: transform 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    }
-    
-    .hamburger:active {
-        transform: scale(0.92);
     }
     
     .certifications-grid {
@@ -736,111 +707,35 @@ nav {
     }
 }
 
-/* Mobile Optimizations - Performance & UX */
-@media (max-width: 767px) {
-    /* Hide scrollbars for cleaner mobile experience */
-    ::-webkit-scrollbar {
-        display: none;
-    }
-    
-    /* Firefox */
-    * {
-        scrollbar-width: none;
-    }
-    
-    /* IE/Edge */
-    * {
-        -ms-overflow-style: none;
-    }
+/* Scrollbar Styling - Liquid Glass */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
 
-    /* Mobile Devices - Corner Positions */
-    .animated-bg {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        overflow: hidden;
-        will-change: contents;
-        visibility: visible !important;
-        opacity: 1 !important;
-        pointer-events: none;
-    }
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
 
-    .gradient-sphere {
-        width: 60vmin;
-        height: 60vmin;
-        top: -20vmin;
-        right: -20vmin;
-        left: auto;
-        bottom: auto;
-        position: absolute;
-        transform: none !important;
-        animation: none !important;
-        will-change: transform;
-        -webkit-transform: none !important;
-        -moz-transform: none !important;
-        -ms-transform: none !important;
-        visibility: visible !important;
-        opacity: 0.8 !important;
-    }
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    border-radius: 10px;
+}
 
-    .gradient-sphere-2 {
-        width: 60vmin;
-        height: 60vmin;
-        bottom: -20vmin;
-        left: -20vmin;
-        top: auto;
-        right: auto;
-        position: absolute;
-        transform: none !important;
-        animation: none !important;
-        will-change: transform;
-        -webkit-transform: none !important;
-        -moz-transform: none !important;
-        -ms-transform: none !important;
-        visibility: visible !important;
-        opacity: 0.8 !important;
-    }
-
-    .grid-overlay {
-        display: none !important;
-    }
-
-    /* Disable heavy animations on mobile for better performance */
-    
-    /* Disable ALL transitions on mobile devices */
-    * {
-        transition: none !important;
-        animation: none !important;
-    }
-    
-    /* Disable hover effects on touch devices */
-    .certification-card:hover {
-        transform: translateY(0) !important;
-        background: rgba(255, 255, 255, 0.04) !important;
-        border-color: var(--glass-border) !important;
-        box-shadow: none !important;
-    }
-    
-    .certification-img:hover {
-        transform: scale(1) !important;
-    }
-    
-    .certification-link:hover {
-        color: var(--secondary-color) !important;
-        transform: none !important;
-    }
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #ff6b9d, var(--secondary-color));
 }
     </style>
 </head>
 <body>
     <!-- Background Animation -->
-    <div class="animated-bg">
-        <div class="gradient-sphere"></div>
-        <div class="gradient-sphere-2"></div>
-        <div class="grid-overlay"></div>
+    <div class="bg-animation">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
     </div>
 
     <!-- Header -->
